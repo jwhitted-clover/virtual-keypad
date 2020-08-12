@@ -6,9 +6,22 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "babel-eslint": "^10.1.0",
+    "change-case": "^4.1.1",
+    "classnames": "^2.2.6",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "node-sass": "^4.14.1",
+    "prettier-eslint": "^11.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-redux": "^7.2.1",
+    "react-scripts": "3.4.3",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "remote-pay-cloud": "^3.1.0",
+    "reselect": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,7 +30,19 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "airbnb-base",
+      "prettier",
+      "react-app"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "import/prefer-default-export": [
+        "warn"
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -30,5 +55,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "jsxSingleQuote": false,
+    "printWidth": 120,
+    "quoteProps": "as-needed",
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
   }
 }

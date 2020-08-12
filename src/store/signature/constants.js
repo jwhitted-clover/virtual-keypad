@@ -1,0 +1,1 @@
+export const SIGNATURE_SET = 'SIGNATURE_SET';
