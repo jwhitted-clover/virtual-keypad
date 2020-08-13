@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { disconnect } from '../../store';
 import { Logo, Power } from '../SVG';
 import { selectVisible } from './selectors';
+import Screen from './Screen';
+import Keys from './Keys';
+import './styles.scss';
 
 export default () => {
   const dispatch = useDispatch();
@@ -11,7 +14,7 @@ export default () => {
 
   const click = useCallback(() => dispatch(disconnect()), [dispatch]);
 
-  if (!visible) return null;
+  // if (!visible) return null;
 
   return (
     <div className="Keypad card">
@@ -22,7 +25,10 @@ export default () => {
           <Power />
         </button>
       </div>
-      <div className="card-body">Coming soon...</div>
+      <div className="card-body">
+        <Screen />
+        <Keys />
+      </div>
     </div>
   );
 };

@@ -9,10 +9,10 @@ import './styles.scss';
 function App() {
   return (
     <div className="App container">
+      <Keypad />
       <Error />
       <Configuration />
       <Devices />
-      <Keypad />
     </div>
   );
 }

@@ -1,0 +1,49 @@
+.Keypad button:focus {
+  box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, 0.3);
+}
+
+.Screen.alert {
+  padding: 0.5rem;
+}
+
+table.Keys {
+  $height: 62px;
+  $spacing: 3px;
+
+  width: calc(100% + 6px);
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-left: -$spacing;
+  margin-right: -$spacing;
+
+  td {
+    padding: 3px;
+  }
+
+  thead button {
+    width: 100%;
+    height: 40px;
+    background-image: none;
+
+    &:hover {
+      background-image: none !important;
+    }
+  }
+
+  tbody {
+    td {
+      width: 25%;
+    }
+
+    button {
+      width: 100%;
+      height: $height;
+      font-family: 'Nato Sans', sans-serif;
+      font-size: 25px;
+    }
+
+    td[rowspan='2'] button {
+      height: 2 * $height + 2 * $spacing;
+    }
+  }
+}
