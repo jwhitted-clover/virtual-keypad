@@ -1,12 +1,11 @@
 @import url('https://bootswatch.com/4/spacelab/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans:wght@400;700&family=Roboto+Mono&display=swap');
 
 .container {
   max-width: 300px;
   font-size: 0.8rem;
-}
-
-.card-body {
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 .form-group {
@@ -15,10 +14,55 @@
   }
 
   input {
-    padding: 0.5rem;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.72rem;
+    padding: 0.4rem;
   }
 }
 
 .list-group-item {
   padding: 0.5rem 0.75rem;
+}
+
+.card {
+  background-color: #484944;
+  color: #e6ebe7;
+}
+
+.card-header {
+  padding: 0.5rem;
+  border-bottom: 0;
+  display: flex;
+
+  .Logo path {
+    fill: #5fa42d;
+  }
+
+  h3 {
+    font-family: 'Archivo Black', cursive;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.8);
+    opacity: 0.5;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0;
+    line-height: 30px;
+    flex-grow: 1;
+    padding-left: 0.5rem;
+  }
+
+  .Power {
+    margin-top: -3px;
+
+    fill: #09070c;
+  }
+}
+
+.card-body {
+  padding: 0.5rem;
+}
+
+.card-footer {
+  padding: 0.5rem;
+  border-top: 0;
 }

@@ -48,7 +48,7 @@ export default () => {
       <div className="Configuration card">
         <div className="card-header">
           <Logo />
-          Virtual Keypad
+          <h3>Virtual Keypad</h3>
         </div>
         <div className="card-body">
           <div className="form-group">

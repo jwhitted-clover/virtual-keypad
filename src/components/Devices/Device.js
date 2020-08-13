@@ -10,18 +10,27 @@ export default ({ device, active, disabled, onClick }) => {
     <button
       key={device.id}
       type="button"
-      className={classNames('list-group-item list-group-item-action p-1', { disabled, active })}
+      className={classNames(
+        'list-group-item d-flex justify-content-between align-items-center list-group-item-action p-1',
+        {
+          disabled,
+          'list-group-item-primary': active,
+        }
+      )}
       onClick={onClick}
     >
-      <div className="d-flex">
-        <span className="p-1" role="img" aria-label={cloudStatus} title={cloudStatus}>
-          ☁️{device.apps[APP.CLOUD_PAY_DISPLAY] ? '🆗' : '🚫'}
-        </span>
-        <div className="p-1">
-          {device.name && <div className="font-weight-bold">{device.name}</div>}
-          {device.productName} {device.serial}
-        </div>
+      <div className="p-1">
+        {device.name && <div className="font-weight-bold">{device.name}</div>}
+        {device.productName} {device.serial}
       </div>
+      <span
+        className={classNames('badge p-1', { 'badge-success': cloud, 'badge-warning': !cloud })}
+        role="img"
+        aria-label={cloudStatus}
+        title={cloudStatus}
+      >
+        ☁️
+      </span>
     </button>
   );
 };

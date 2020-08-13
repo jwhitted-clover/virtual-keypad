@@ -9,7 +9,7 @@ export default () => {
   const dispatch = useDispatch();
   const visible = useSelector(selectVisible);
 
-  const power = useCallback(() => dispatch(disconnect()), [dispatch]);
+  const click = useCallback(() => dispatch(disconnect()), [dispatch]);
 
   if (!visible) return null;
 
@@ -17,8 +17,8 @@ export default () => {
     <div className="Keypad card">
       <div className="card-header">
         <Logo />
-        Virtual Keypad
-        <button onClick={power}>
+        <h3>Virtual Keypad</h3>
+        <button className="btn btn-sm btn-outline-dark" onClick={click} title="Disconnect">
           <Power />
         </button>
       </div>
