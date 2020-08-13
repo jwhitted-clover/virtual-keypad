@@ -14,7 +14,7 @@ export default () => {
 
   const click = useCallback(() => dispatch(disconnect()), [dispatch]);
 
-  // if (!visible) return null;
+  if (!visible) return null;
 
   return (
     <div className="Keypad card">

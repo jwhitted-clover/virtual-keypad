@@ -9,6 +9,12 @@ export default (state = initialState, { type, payload }) => {
         height: payload?.height || 0,
         strokes: payload?.strokes || [],
       };
+    case '@@connector/onVerifySignatureRequest':
+      return {
+        width: payload.signature.width,
+        height: payload.signature.height,
+        strokes: payload.signature.strokes,
+      };
     default:
       return state;
   }

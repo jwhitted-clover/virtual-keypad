@@ -2,8 +2,6 @@ import { createSelector } from 'reselect';
 
 export const selectSignature = state => state.signature;
 
-export const selectHasSignature = createSelector(selectSignature, ({ strokes }) => !!strokes.length);
-
 export const selectSignatureBounds = createSelector(selectSignature, ({ strokes }) => {
   const bounds = strokes
     .map(({ points }) => points)

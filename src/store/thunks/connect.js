@@ -1,11 +1,13 @@
 import Clover from 'remote-pay-cloud';
 
-import { setDeviceId, selectDevices } from '../devices';
-import persist from '../../common/persist';
 import { REMOTE_APPLICATION_ID, APP } from '../../common/constants';
+import persist from '../../common/persist';
+import { selectConfiguration } from '../configuration/selectors';
+import { selectDevices } from '../devices/selectors';
 import { setConnector } from '../connection/actions';
-import { selectConfiguration } from '../configuration';
-import { setError } from '../error';
+import { setDeviceId } from '../devices/actions';
+import { setError } from '../error/actions';
+import { setStatus } from '../status/actions';
 
 export default deviceId => async (dispatch, getState) => {
   try {
@@ -49,6 +51,7 @@ export default deviceId => async (dispatch, getState) => {
     connector.addCloverConnectorListener(listener);
 
     dispatch(setConnector(connector));
+    dispatch(setStatus('Connecting...'));
 
     connector.initializeConnection();
   } catch (e) {

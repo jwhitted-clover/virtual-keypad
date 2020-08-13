@@ -9,6 +9,12 @@ export default (state = initialState, { type, payload }) => {
         message: payload.message,
         stack: payload.stack,
       };
+    case '@@connector/onDeviceError':
+      return {
+        ...state,
+        message: `Device Error ${payload.message}`,
+        stack: null,
+      };
     default:
       return state;
   }

@@ -1,0 +1,2 @@
+export const ACTIONS_SET = 'ACTIONS_SET';
+export const ACTIONS_APPEND = 'ACTIONS_APPEND';
