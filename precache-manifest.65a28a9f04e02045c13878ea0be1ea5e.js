@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2a12c518266694dd5de745fd151b71c8",
+    "revision": "2895e2c6bdff4b395c4b2903360111b3",
     "url": "/virtual-keypad/index.html"
   },
   {
