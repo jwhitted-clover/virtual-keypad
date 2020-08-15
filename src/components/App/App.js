@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Configuration from '../Configuration';
 import Devices from '../Devices/Devices';
 import Error from '../Error';
 import Keypad from '../Keypad';
 import Payment from '../Payment';
+import usePreventDoubleTapZoom from './usePreventDoubleTapZoom';
 import './styles.scss';
 
-function App() {
+export default () => {
+  usePreventDoubleTapZoom();
+
   return (
     <div className="App container">
       <div className="row no-gutters">
@@ -27,6 +30,4 @@ function App() {
       </div>
     </div>
   );
-}
-
-export default App;
+};

@@ -46,8 +46,6 @@ export default () => {
 
   const [action1, action2, ...moreActions] = actions;
 
-  if (moreActions?.length) console.log(moreActions);
-
   return (
     <div className="Keys">
       <div className="row no-gutters">
