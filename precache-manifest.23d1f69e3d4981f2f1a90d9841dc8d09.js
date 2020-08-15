@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ada6a940d19719ae4a23b8432face631",
+    "revision": "6736f9dafdb89ef7dde9cb1354f2ce44",
     "url": "/virtual-keypad/index.html"
   },
   {
-    "revision": "92050ceb96a56dce7f13",
+    "revision": "de65fb2d351a714c299f",
     "url": "/virtual-keypad/static/css/main.231b8c55.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/virtual-keypad/static/js/2.744ca824.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "92050ceb96a56dce7f13",
-    "url": "/virtual-keypad/static/js/main.5d327363.chunk.js"
+    "revision": "de65fb2d351a714c299f",
+    "url": "/virtual-keypad/static/js/main.af880479.chunk.js"
   },
   {
     "revision": "e4f7f7fff6724bbece06",
