@@ -12,6 +12,8 @@
 
 ### TODO
 
+- [x] Responsively fit mobile phones
+- [x] Prevent viewport zooming on mobile devices
 - [ ] Add timeouts to transactions
 - [ ] Support more than 2 actions (dropdown)
 - [ ] Support more than sale transactions

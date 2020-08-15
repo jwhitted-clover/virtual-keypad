@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import QS from 'query-string';
 
 import { configure, selectConfiguration } from '../../store';
 import { selectVisible } from './selectors';
@@ -10,10 +11,12 @@ export default () => {
   const configuration = useSelector(selectConfiguration);
   const visible = useSelector(selectVisible);
 
-  const [cloverDomain, setCloverDomain] = useState(configuration.cloverDomain);
-  const [merchantId, setMerchantId] = useState(configuration.merchantId);
+  const qs = QS.parse(window.location.search);
+
+  const [cloverDomain, setCloverDomain] = useState(configuration.cloverDomain || 'https://clover.com');
+  const [merchantId, setMerchantId] = useState(qs.merchant_id || configuration.merchantId);
   const [accessToken, setAccessToken] = useState(configuration.accessToken);
-  const [friendlyId, setFriendlyId] = useState(configuration.friendlyId);
+  const [friendlyId, setFriendlyId] = useState(configuration.friendlyId || 'Virtual Keypad');
 
   const [disabled, setDisabled] = useState();
 
