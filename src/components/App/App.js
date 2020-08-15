@@ -10,11 +10,21 @@ import './styles.scss';
 function App() {
   return (
     <div className="App container">
-      <Error />
-      <Configuration />
-      <Devices />
-      <Payment />
-      <Keypad />
+      <div className="row no-gutters">
+        <div className="col-12 col-md-6">
+          <div className="maxwidth mx-auto">
+            <Error />
+            <Configuration />
+            <Devices />
+            <Keypad />
+          </div>
+        </div>
+        <div className="col-12 col-md-6 order-first order-md-last">
+          <div className="maxwidth mx-auto ml-md-2">
+            <Payment />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

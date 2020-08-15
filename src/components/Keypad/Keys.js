@@ -11,6 +11,7 @@ import {
 } from '../../store';
 import Key from './Key';
 import { ACTION_CREATOR } from './constants';
+import { ACTION } from '../../common';
 
 export default () => {
   const dispatch = useDispatch();
@@ -20,13 +21,16 @@ export default () => {
   const [actionClicked, setActionClicked] = useState(false);
   const keysDisabled = useMemo(() => !transactionAction || actionClicked, [transactionAction, actionClicked]);
 
-  const actionHandler = useCallback(
-    action => async () => {
+  const onAction = useCallback(
+    async action => {
       setActionClicked(true);
+      if (action.type === ACTION.INVOKE_INPUT_OPTION) setTimeout(() => setActionClicked(false), 250);
       await dispatch(ACTION_CREATOR[action.type](action));
     },
     [dispatch, setActionClicked]
   );
+
+  const actionHandler = action => async () => onAction(action);
 
   useEffect(() => {
     if (actions.length) setActionClicked(false);
@@ -42,12 +46,14 @@ export default () => {
 
   const [action1, action2, ...moreActions] = actions;
 
+  if (moreActions?.length) console.log(moreActions);
+
   return (
     <div className="Keys">
       <div className="row no-gutters">
         <div className="col-6 p-1">
           <Key
-            action={action1}
+            action={action1 || {}}
             disabled={!action1 || actionClicked}
             keyCodes={['F1', 'NumpadDivide']}
             onClick={actionHandler(action1)}
@@ -55,11 +61,12 @@ export default () => {
         </div>
         <div className="col-6 p-1">
           <Key
-            action={action2}
+            action={action2 || {}}
             disabled={!action2 || actionClicked}
             keyCodes={['F2', 'NumpadMultiply']}
             onClick={actionHandler(action2)}
             moreActions={moreActions}
+            onMoreClick={action => onAction(action)}
           />
         </div>
       </div>
