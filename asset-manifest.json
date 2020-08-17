@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/virtual-keypad/static/css/main.231b8c55.chunk.css",
-    "main.js": "/virtual-keypad/static/js/main.f4cd9498.chunk.js",
-    "main.js.map": "/virtual-keypad/static/js/main.f4cd9498.chunk.js.map",
+    "main.js": "/virtual-keypad/static/js/main.b3b904f4.chunk.js",
+    "main.js.map": "/virtual-keypad/static/js/main.b3b904f4.chunk.js.map",
     "runtime-main.js": "/virtual-keypad/static/js/runtime-main.e835a9f2.js",
     "runtime-main.js.map": "/virtual-keypad/static/js/runtime-main.e835a9f2.js.map",
-    "static/js/2.744ca824.chunk.js": "/virtual-keypad/static/js/2.744ca824.chunk.js",
-    "static/js/2.744ca824.chunk.js.map": "/virtual-keypad/static/js/2.744ca824.chunk.js.map",
+    "static/js/2.f427691c.chunk.js": "/virtual-keypad/static/js/2.f427691c.chunk.js",
+    "static/js/2.f427691c.chunk.js.map": "/virtual-keypad/static/js/2.f427691c.chunk.js.map",
     "index.html": "/virtual-keypad/index.html",
-    "precache-manifest.782de41e306abf481a4cf36cdb9dc7e4.js": "/virtual-keypad/precache-manifest.782de41e306abf481a4cf36cdb9dc7e4.js",
+    "precache-manifest.d07d035ac8b1af3d936b0861fbad891b.js": "/virtual-keypad/precache-manifest.d07d035ac8b1af3d936b0861fbad891b.js",
     "service-worker.js": "/virtual-keypad/service-worker.js",
     "static/css/main.231b8c55.chunk.css.map": "/virtual-keypad/static/css/main.231b8c55.chunk.css.map",
-    "static/js/2.744ca824.chunk.js.LICENSE.txt": "/virtual-keypad/static/js/2.744ca824.chunk.js.LICENSE.txt"
+    "static/js/2.f427691c.chunk.js.LICENSE.txt": "/virtual-keypad/static/js/2.f427691c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e835a9f2.js",
-    "static/js/2.744ca824.chunk.js",
+    "static/js/2.f427691c.chunk.js",
     "static/css/main.231b8c55.chunk.css",
-    "static/js/main.f4cd9498.chunk.js"
+    "static/js/main.b3b904f4.chunk.js"
   ]
 }
