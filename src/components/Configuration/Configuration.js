@@ -14,7 +14,7 @@ export default () => {
   const qs = QS.parse(window.location.search);
   const hash = QS.parse(window.location.hash);
 
-  const [cloverDomain, setCloverDomain] = useState(configuration.cloverDomain || 'https://clover.com');
+  const [cloverDomain, setCloverDomain] = useState(configuration.cloverDomain || 'https://www.clover.com');
   const [merchantId, setMerchantId] = useState(qs.merchant_id || configuration.merchantId);
   const [accessToken, setAccessToken] = useState(hash.access_token || configuration.accessToken);
   const [friendlyId, setFriendlyId] = useState(configuration.friendlyId || 'Virtual Keypad');

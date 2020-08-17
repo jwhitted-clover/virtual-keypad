@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import Configuration from '../Configuration';
 import Devices from '../Devices/Devices';
