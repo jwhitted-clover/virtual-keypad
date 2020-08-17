@@ -53,7 +53,7 @@ export default () => {
         </div>
       </div>
       <div className="card-footer">
-        <button className="btn btn-secondary" onClick={cancel}>
+        <button className="btn btn-secondary" onClick={cancel} disabled={disabled}>
           Cancel
         </button>
       </div>

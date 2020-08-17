@@ -9,6 +9,7 @@ export default (state = initialState, { type, payload }) => {
         merchantId: payload.merchantId || '',
         accessToken: payload.accessToken || '',
         friendlyId: payload.friendlyId || '',
+        autoConnect: payload.autoConnect || false,
       };
     default:
       return state;

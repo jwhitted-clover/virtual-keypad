@@ -22,6 +22,7 @@
 - [ ] Add help to configuration
 - [x] Allow cancel on device selection
 - [ ] Test error flows in thunks
-- [ ] Auto-connect option?!
+- [x] Auto-connect option
 - [ ] Complete README
 - [ ] Enable Service Worker
+- [x] Improve UX when selecting a device

@@ -14,7 +14,7 @@ export default ({ device, active, disabled, onClick }) => {
         'list-group-item d-flex justify-content-between align-items-center list-group-item-action p-1',
         {
           disabled,
-          'list-group-item-primary': active,
+          'list-group-item-primary': !disabled && active,
         }
       )}
       onClick={onClick}
@@ -24,7 +24,11 @@ export default ({ device, active, disabled, onClick }) => {
         {device.productName} {device.serial}
       </div>
       <span
-        className={classNames('badge p-1', { 'badge-success': cloud, 'badge-warning': !cloud })}
+        className={classNames('badge p-1', {
+          'badge-secondary': disabled,
+          'badge-success': !disabled && cloud,
+          'badge-warning': !disabled && !cloud,
+        })}
         role="img"
         aria-label={cloudStatus}
         title={cloudStatus}

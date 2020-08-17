@@ -1,5 +1,7 @@
 import { STORAGE } from '../common/constants';
 import createStore from './createStore';
+import { selectAutoConnect, selectConfiguration } from './configuration/selectors';
+import { configure } from './thunks';
 
 let initialState;
 try {
@@ -10,4 +12,12 @@ try {
   initialState = initialState || undefined;
 }
 
-export default createStore(initialState);
+const store = createStore(initialState);
+
+const state = store.getState();
+if (selectAutoConnect(state)) {
+  const config = selectConfiguration(state);
+  store.dispatch(configure(config));
+}
+
+export default store;

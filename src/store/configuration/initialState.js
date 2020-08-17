@@ -3,4 +3,5 @@ export default {
   merchantId: '',
   accessToken: '',
   friendlyId: '',
+  autoConnect: false,
 };

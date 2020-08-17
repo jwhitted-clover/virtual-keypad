@@ -18,6 +18,7 @@ export default () => {
   const [merchantId, setMerchantId] = useState(qs.merchant_id || configuration.merchantId);
   const [accessToken, setAccessToken] = useState(hash.access_token || configuration.accessToken);
   const [friendlyId, setFriendlyId] = useState(configuration.friendlyId || 'Virtual Keypad');
+  const [autoConnect, setAutoConnect] = useState(configuration.autoConnect || false);
 
   const [disabled, setDisabled] = useState();
 
@@ -26,12 +27,12 @@ export default () => {
       try {
         event.preventDefault();
         setDisabled(true);
-        await dispatch(configure({ cloverDomain, merchantId, accessToken, friendlyId }));
+        await dispatch(configure({ cloverDomain, merchantId, accessToken, friendlyId, autoConnect }));
       } finally {
         setDisabled(false);
       }
     },
-    [dispatch, cloverDomain, merchantId, accessToken, friendlyId]
+    [dispatch, cloverDomain, merchantId, accessToken, friendlyId, autoConnect]
   );
 
   const reset = useCallback(
@@ -41,8 +42,9 @@ export default () => {
       setMerchantId(configuration.merchantId);
       setAccessToken(configuration.accessToken);
       setFriendlyId(configuration.friendlyId);
+      setAutoConnect(configuration.autoConnect);
     },
-    [configuration, setCloverDomain, setMerchantId, setAccessToken, setFriendlyId]
+    [configuration, setCloverDomain, setMerchantId, setAccessToken, setFriendlyId, setAutoConnect]
   );
 
   if (!visible) return null;
@@ -94,6 +96,21 @@ export default () => {
               onChange={event => setFriendlyId(event.target.value)}
               disabled={disabled}
             />
+          </div>
+          <div className="form-group">
+            <div className="custom-control custom-switch">
+              <input
+                id="chkAutoConnect"
+                type="checkbox"
+                className="custom-control-input"
+                disabled={disabled}
+                checked={autoConnect}
+                onChange={() => setAutoConnect(!autoConnect)}
+              />
+              <label className="custom-control-label font-weight-normal" htmlFor="chkAutoConnect">
+                Auto-connect
+              </label>
+            </div>
           </div>
         </div>
         <div className="card-footer">

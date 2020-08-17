@@ -28,6 +28,11 @@
   }
 }
 
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: #5fa32c;
+  background-color: #5fa32c;
+}
+
 .list-group-item {
   padding: 0.5rem 0.75rem;
 }
