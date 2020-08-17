@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectDevices, selectDeviceId, connect } from '../../store';
+import { selectDevices, selectDeviceId, connect, setDevices } from '../../store';
 import { selectVisible } from './selectors';
 import { Logo } from '../SVG';
 import Device from './Device';
@@ -26,6 +26,8 @@ export default () => {
     [dispatch]
   );
 
+  const cancel = () => dispatch(setDevices());
+
   if (!visible) return null;
 
   return (
@@ -49,6 +51,11 @@ export default () => {
             ))}
           </div>
         </div>
+      </div>
+      <div className="card-footer">
+        <button className="btn btn-secondary" onClick={cancel}>
+          Cancel
+        </button>
       </div>
     </div>
   );

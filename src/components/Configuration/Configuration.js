@@ -12,10 +12,11 @@ export default () => {
   const visible = useSelector(selectVisible);
 
   const qs = QS.parse(window.location.search);
+  const hash = QS.parse(window.location.hash);
 
   const [cloverDomain, setCloverDomain] = useState(configuration.cloverDomain || 'https://clover.com');
   const [merchantId, setMerchantId] = useState(qs.merchant_id || configuration.merchantId);
-  const [accessToken, setAccessToken] = useState(configuration.accessToken);
+  const [accessToken, setAccessToken] = useState(hash.access_token || configuration.accessToken);
   const [friendlyId, setFriendlyId] = useState(configuration.friendlyId || 'Virtual Keypad');
 
   const [disabled, setDisabled] = useState();
