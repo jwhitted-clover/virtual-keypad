@@ -3,8 +3,14 @@ import initialState from './initialState';
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case CONST.CONFIGURATION_LOADING:
+      return {
+        ...state,
+        loading: payload || undefined,
+      };
     case CONST.CONFIGURATION_SET:
       return {
+        ...state,
         cloverDomain: payload.cloverDomain || '',
         merchantId: payload.merchantId || '',
         accessToken: payload.accessToken || '',

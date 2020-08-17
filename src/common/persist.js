@@ -5,7 +5,10 @@ export default ({ configuration, devices }) =>
   localStorage.setItem(
     STORAGE,
     JSON.stringify({
-      configuration,
+      configuration: {
+        ...configuration,
+        loading: undefined,
+      },
       devices: {
         ...initialDevices,
         selected: devices.selected,

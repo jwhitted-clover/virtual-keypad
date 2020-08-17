@@ -35,6 +35,9 @@ export default () => {
       <div className="card-header">
         <Logo />
         <h3>Virtual Keypad</h3>
+        <button className="close" title="Cancel" onClick={cancel} disabled={disabled}>
+          &times;
+        </button>
       </div>
       <div className="card-body">
         <div className="form-group">
@@ -51,11 +54,6 @@ export default () => {
             ))}
           </div>
         </div>
-      </div>
-      <div className="card-footer">
-        <button className="btn btn-secondary" onClick={cancel} disabled={disabled}>
-          Cancel
-        </button>
       </div>
     </div>
   );

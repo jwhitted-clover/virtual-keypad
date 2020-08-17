@@ -26,3 +26,4 @@
 - [ ] Complete README
 - [ ] Enable Service Worker
 - [x] Improve UX when selecting a device
+- [ ] Check for device online on device selection screen

@@ -1,14 +1,15 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import QS from 'query-string';
 
-import { configure, selectConfiguration } from '../../store';
+import { configure, selectConfiguration, selectConfigurationLoading } from '../../store';
 import { selectVisible } from './selectors';
 import { Logo } from '../SVG';
 
 export default () => {
   const dispatch = useDispatch();
   const configuration = useSelector(selectConfiguration);
+  const loading = useSelector(selectConfigurationLoading);
   const visible = useSelector(selectVisible);
 
   const qs = QS.parse(window.location.search);
@@ -20,16 +21,18 @@ export default () => {
   const [friendlyId, setFriendlyId] = useState(configuration.friendlyId || 'Virtual Keypad');
   const [autoConnect, setAutoConnect] = useState(configuration.autoConnect || false);
 
-  const [disabled, setDisabled] = useState();
+  const [submitting, setSubmitting] = useState(false);
+
+  const disabled = useMemo(() => loading || submitting, [loading, submitting]);
 
   const submit = useCallback(
     async event => {
       try {
         event.preventDefault();
-        setDisabled(true);
+        setSubmitting(true);
         await dispatch(configure({ cloverDomain, merchantId, accessToken, friendlyId, autoConnect }));
       } finally {
-        setDisabled(false);
+        setSubmitting(false);
       }
     },
     [dispatch, cloverDomain, merchantId, accessToken, friendlyId, autoConnect]
