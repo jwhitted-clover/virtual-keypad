@@ -1,34 +1,35 @@
-import React, { useCallback, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import classNames from 'classnames';
 
-import { selectError, setError } from '../../store';
-import { selectVisible } from './selectors';
-import './styles.scss';
-
-export default () => {
-  const dispatch = useDispatch();
-  const error = useSelector(selectError);
-  const visible = useSelector(selectVisible);
+export default ({ error }) => {
+  const { message, stack } = error;
   const [expanded, setExpanded] = useState(false);
 
-  const close = useCallback(() => dispatch(setError()), [dispatch]);
+  const expand = () => {
+    document.querySelector('.react-toast-notifications__container').classList.add('expanded');
+    setExpanded(true);
+  };
 
-  if (!visible) return null;
+  useEffect(() => {
+    return () => {
+      const remaining = document.querySelectorAll('.Error.expanded').length - (expanded ? 1 : 0);
+      if (!remaining) {
+        document.querySelector('.react-toast-notifications__container').classList.remove('expanded');
+      }
+    };
+  }, [expanded]);
 
   return (
-    <div className="Error alert alert-danger">
-      <button type="button" className="close" onClick={close}>
-        &times;
-      </button>
-      <h3 className="alert-heading">{error.message}</h3>
-      {!!error.stack && !expanded && (
-        <button type="button" className="btn btn-link btn-sm text-danger" onClick={() => setExpanded(true)}>
-          Show details&hellip;
+    <div className={classNames('Error', { expanded })}>
+      <h5>{message}</h5>
+      {!!stack && !expanded && (
+        <button className="btn btn-link btn-sm" onClick={expand}>
+          Show details...
         </button>
       )}
-      {!!error.stack && expanded && (
-        <pre>
-          <code>{error?.stack}</code>
+      {!!stack && expanded && (
+        <pre className="mb-0">
+          <code>{stack}</code>
         </pre>
       )}
     </div>

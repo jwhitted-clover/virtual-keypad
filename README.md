@@ -15,15 +15,18 @@
 - [x] Responsively fit mobile phones
 - [x] Prevent double tap zooming on mobile devices
 - [x] Read merchantId and accessToken from url
-- [ ] Add timeouts to transactions
 - [x] Support more than 2 actions (dropdown)
+- [x] Allow cancel on device selection
+- [x] Auto-connect option
+- [x] Improve UX when selecting a device
+- [x] Switch errors to toasts
+- [ ] Add timeouts to transactions
 - [ ] Support more than sale transactions
 - [ ] Add validation to configuration
 - [ ] Add help to configuration
-- [x] Allow cancel on device selection
 - [ ] Test error flows in thunks
-- [x] Auto-connect option
-- [ ] Complete README
 - [ ] Enable Service Worker
-- [x] Improve UX when selecting a device
 - [ ] Check for device online on device selection screen
+- [ ] Handle partial payment
+- [ ] Allow void after payment success
+- [ ] Complete README

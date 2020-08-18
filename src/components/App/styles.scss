@@ -81,3 +81,16 @@
   padding: 0.5rem;
   border-top: 0;
 }
+
+.react-toast-notifications__container.expanded {
+  overflow-x: auto;
+  overflow-y: auto;
+
+  > div {
+    height: auto !important;
+  }
+
+  .react-toast-notifications__toast {
+    width: auto;
+  }
+}

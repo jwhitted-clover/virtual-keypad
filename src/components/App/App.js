@@ -1,22 +1,23 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import Configuration from '../Configuration';
 import Devices from '../Devices/Devices';
-import Error from '../Error';
 import Keypad from '../Keypad';
 import Payment from '../Payment';
+import { useError } from '../Error';
 import usePreventDoubleTapZoom from './usePreventDoubleTapZoom';
 import './styles.scss';
 
 export default () => {
   usePreventDoubleTapZoom();
+  useError();
 
   return (
-    <div className="App container">
+    <div className={classNames('App container')}>
       <div className="row no-gutters">
         <div className="col-12 col-md-6">
           <div className="maxwidth mx-auto">
-            <Error />
             <Configuration />
             <Devices />
             <Keypad />
