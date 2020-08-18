@@ -28,6 +28,8 @@ export default (state = initialState, { type, payload }) => {
       };
     case '@@connector/onSaleResponse':
       return initialState;
+    case '@@connector/onVoidPaymentResponse':
+      return initialState;
     case '@@connector/onResetDeviceResponse':
       return initialState;
     case `@@action/${ACTION.TRANSACTION}`:

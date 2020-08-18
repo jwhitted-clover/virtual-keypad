@@ -13,6 +13,8 @@ export default (state = initialState, { type, payload }) => {
       return payload.message;
     case '@@connector/onSaleResponse':
       return 'Ready';
+    case '@@connector/onVoidPaymentResponse':
+      return 'Ready';
     case '@@connector/onConfirmPaymentRequest':
       return payload.challenges[0].message;
     case '@@connector/onVerifySignatureRequest':

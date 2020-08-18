@@ -9,6 +9,7 @@ export const ACTION = {
   RESET: 'RESET',
   SHOW_WELCOME: 'SHOW_WELCOME',
   TRANSACTION: 'TRANSACTION',
+  VOID_PAYMENT: 'VOID_PAYMENT',
 };
 
 export const APP = {
@@ -28,4 +29,5 @@ export const STORAGE = 'clover/virtual-keypad';
 export const TRANSACTION = {
   SALE: 'SALE',
   REFUND: 'REFUND',
+  VOID: 'VOID',
 };

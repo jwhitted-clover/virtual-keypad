@@ -9,6 +9,7 @@ import payment from './payment/reducer';
 import signature from './signature/reducer';
 import status from './status/reducer';
 import transaction from './transaction/reducer';
+import transactions from './transactions/reducer';
 
 const rootReducer = combineReducers({
   actions,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   signature,
   status,
   transaction,
+  transactions,
 });
 
 export default rootReducer;

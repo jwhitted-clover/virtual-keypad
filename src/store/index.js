@@ -10,3 +10,4 @@ export * from './signature';
 export * from './status';
 export * from './thunks';
 export * from './transaction';
+export * from './transactions';

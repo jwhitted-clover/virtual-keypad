@@ -18,6 +18,8 @@ export default (state = initialState, { type, payload }) => {
       return payload.inputOptions.map(io => ({ type: ACTION.INVOKE_INPUT_OPTION, payload: io }));
     case '@@connector/onSaleResponse':
       return [{ type: ACTION.IDENTIFY }, { type: ACTION.RESET }, { type: ACTION.TRANSACTION }];
+    case '@@connector/onVoidPaymentResponse':
+      return [{ type: ACTION.IDENTIFY }, { type: ACTION.RESET }, { type: ACTION.TRANSACTION }];
     case '@@connector/onConfirmPaymentRequest':
       return [
         { type: ACTION.ACCEPT_PAYMENT, payload: { description: 'Accept', ...payload } },

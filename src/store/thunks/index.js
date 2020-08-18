@@ -10,3 +10,4 @@ export { default as rejectSignature } from './rejectSignature';
 export { default as reset } from './reset';
 export { default as showWelcome } from './showWelcome';
 export { default as transaction } from './transaction';
+export { default as voidPayment } from './voidPayment';
