@@ -1,5 +1,6 @@
 import { ACTION } from '../../common/constants';
 import * as CONST from './constants';
+import { CONNECTION_SET_CONNECTOR } from '../connection/constants';
 import initialState from './initialState';
 
 export default (state = initialState, { type, payload }) => {
@@ -10,6 +11,8 @@ export default (state = initialState, { type, payload }) => {
     }
     case CONST.ACTIONS_SET:
       return payload || [];
+    case CONNECTION_SET_CONNECTOR:
+      return [{ type: ACTION.DISCONNECT, payload: { description: 'Cancel' } }];
     case '@@connector/onDeviceReady':
       return [{ type: ACTION.IDENTIFY }, { type: ACTION.RESET }, { type: ACTION.TRANSACTION }];
     case '@@connector/onResetDeviceResponse':

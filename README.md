@@ -24,6 +24,7 @@
 - [x] Handle partial payment
 - [x] Make manual card entry configurable
 - [x] Get rid of transaction and payment stores if they are not needed
+- [x] Allow 'cancel' when attempting to connect to a device
 - [ ] Support more than sale transactions
 - [ ] Support reviewing transactions in store
 - [ ] Add validation to configuration
@@ -31,5 +32,4 @@
 - [ ] Test error flows in thunks
 - [ ] Add timeouts to transactions
 - [ ] Enable Service Worker
-- [ ] Check for device online on device selection screen
 - [ ] Complete README
