@@ -1,13 +1,14 @@
 import Clover from 'remote-pay-cloud';
 
-import { TRANSACTION, ACTION } from '../../common/constants';
-import { setError } from '../error/actions';
-import { selectConnector } from '../connection/selectors';
-import { selectBuffer } from '../buffer/selectors';
-import { setTransactionType, setTransactionAmount } from '../transaction/actions';
-import { setActions } from '../actions/actions';
-import { setStatus } from '../status/actions';
 import { resetBuffer } from '../buffer/actions';
+import { selectBuffer } from '../buffer/selectors';
+import { selectConnector } from '../connection/selectors';
+import { selectCardEntryMethods } from '../configuration/selectors';
+import { setActions } from '../actions/actions';
+import { setError } from '../error/actions';
+import { setStatus } from '../status/actions';
+import { setTransactionType, setTransactionAmount } from '../transaction/actions';
+import { TRANSACTION, ACTION } from '../../common/constants';
 import { updateTransaction } from '../transactions';
 
 export default action => async (dispatch, getState) => {
@@ -17,6 +18,7 @@ export default action => async (dispatch, getState) => {
     const state = getState();
     const buffer = selectBuffer(state);
     const connector = selectConnector(state);
+    const cardEntryMethods = selectCardEntryMethods(state);
 
     dispatch(setActions());
     dispatch(setStatus('Processing...'));
@@ -35,10 +37,7 @@ export default action => async (dispatch, getState) => {
     const request = new Clover.remotepay.SaleRequest();
     request.setAmount(amount);
     request.setExternalId(id);
-    // TODO: Remove CARD_ENTRY_METHOD_MANUAL
-    // Partial Sale: 6011 3610 0000 6668
-    request.setCardEntryMethods(Clover.CardEntryMethods.DEFAULT | Clover.CardEntryMethods.CARD_ENTRY_METHOD_MANUAL);
-    // request.setCardEntryMethods(Clover.CardEntryMethods.DEFAULT);
+    request.setCardEntryMethods(cardEntryMethods);
 
     dispatch(updateTransaction({ id, type: TRANSACTION.SALE, amount }));
 

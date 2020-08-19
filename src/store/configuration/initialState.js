@@ -3,5 +3,6 @@ export default {
   merchantId: '',
   accessToken: '',
   friendlyId: '',
+  manualCardEntry: false,
   autoConnect: false,
 };

@@ -19,6 +19,7 @@ export default () => {
   const [merchantId, setMerchantId] = useState(qs.merchant_id || configuration.merchantId);
   const [accessToken, setAccessToken] = useState(hash.access_token || configuration.accessToken);
   const [friendlyId, setFriendlyId] = useState(configuration.friendlyId || 'Virtual Keypad');
+  const [manualCardEntry, setManualCardEntry] = useState(configuration.manualCardEntry || false);
   const [autoConnect, setAutoConnect] = useState(configuration.autoConnect || false);
 
   const [submitting, setSubmitting] = useState(false);
@@ -30,12 +31,12 @@ export default () => {
       try {
         event.preventDefault();
         setSubmitting(true);
-        await dispatch(configure({ cloverDomain, merchantId, accessToken, friendlyId, autoConnect }));
+        await dispatch(configure({ cloverDomain, merchantId, accessToken, friendlyId, manualCardEntry, autoConnect }));
       } finally {
         setSubmitting(false);
       }
     },
-    [dispatch, cloverDomain, merchantId, accessToken, friendlyId, autoConnect]
+    [dispatch, cloverDomain, merchantId, accessToken, friendlyId, manualCardEntry, autoConnect]
   );
 
   const reset = useCallback(
@@ -45,9 +46,10 @@ export default () => {
       setMerchantId(configuration.merchantId);
       setAccessToken(configuration.accessToken);
       setFriendlyId(configuration.friendlyId);
+      setManualCardEntry(configuration.manualCardEntry);
       setAutoConnect(configuration.autoConnect);
     },
-    [configuration, setCloverDomain, setMerchantId, setAccessToken, setFriendlyId, setAutoConnect]
+    [configuration, setCloverDomain, setMerchantId, setAccessToken, setFriendlyId, setManualCardEntry, setAutoConnect]
   );
 
   if (!visible) return null;
@@ -99,6 +101,21 @@ export default () => {
               onChange={event => setFriendlyId(event.target.value)}
               disabled={disabled}
             />
+          </div>
+          <div className="form-group">
+            <div className="custom-control custom-switch">
+              <input
+                id="chkManualCardEntry"
+                type="checkbox"
+                className="custom-control-input"
+                disabled={disabled}
+                checked={manualCardEntry}
+                onChange={() => setManualCardEntry(!manualCardEntry)}
+              />
+              <label className="custom-control-label font-weight-normal" htmlFor="chkManualCardEntry">
+                Allow Manual Card Entry
+              </label>
+            </div>
           </div>
           <div className="form-group">
             <div className="custom-control custom-switch">

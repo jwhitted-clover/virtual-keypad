@@ -22,8 +22,8 @@
 - [x] Switch errors to toasts
 - [x] Allow void after payment success
 - [x] Handle partial payment
+- [x] Make manual card entry configurable
 - [ ] Get rid of transaction and payment stores if they are not needed
-- [ ] Remove MANUAL entry (configurable?)
 - [ ] Support more than sale transactions
 - [ ] Add validation to configuration
 - [ ] Add help to configuration

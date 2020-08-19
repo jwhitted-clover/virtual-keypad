@@ -5,7 +5,14 @@ export const setConfigurationLoading = loading => ({
   payload: loading,
 });
 
-export const setConfiguration = ({ cloverDomain, merchantId, accessToken, friendlyId, autoConnect }) => ({
+export const setConfiguration = ({
+  cloverDomain,
+  merchantId,
+  accessToken,
+  friendlyId,
+  manualCardEntry,
+  autoConnect,
+}) => ({
   type: CONST.CONFIGURATION_SET,
-  payload: { cloverDomain, merchantId, accessToken, friendlyId, autoConnect },
+  payload: { cloverDomain, merchantId, accessToken, friendlyId, manualCardEntry, autoConnect },
 });
