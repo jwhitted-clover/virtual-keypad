@@ -7,9 +7,8 @@ import { selectCardEntryMethods } from '../configuration/selectors';
 import { setActions } from '../actions/actions';
 import { setError } from '../error/actions';
 import { setStatus } from '../status/actions';
-import { setTransactionType, setTransactionAmount } from '../transaction/actions';
 import { TRANSACTION, ACTION } from '../../common/constants';
-import { updateTransaction } from '../transactions';
+import { updateTransaction, setActiveTransaction } from '../transactions';
 
 export default action => async (dispatch, getState) => {
   try {
@@ -29,10 +28,10 @@ export default action => async (dispatch, getState) => {
     if (isNaN(amount)) throw new Error('Amount is invalid');
     if (amount <= 0 || amount > 99_999_99) throw new Error('Amount must between 0.01 and 99,999.99');
 
-    dispatch(setTransactionType(TRANSACTION.SALE));
-    dispatch(setTransactionAmount(amount));
-
     const id = Clover.CloverID.getNewId();
+    const type = TRANSACTION.SALE;
+
+    dispatch(setActiveTransaction({ id, type, amount }));
 
     const request = new Clover.remotepay.SaleRequest();
     request.setAmount(amount);

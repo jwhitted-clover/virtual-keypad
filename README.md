@@ -23,8 +23,9 @@
 - [x] Allow void after payment success
 - [x] Handle partial payment
 - [x] Make manual card entry configurable
-- [ ] Get rid of transaction and payment stores if they are not needed
+- [x] Get rid of transaction and payment stores if they are not needed
 - [ ] Support more than sale transactions
+- [ ] Support reviewing transactions in store
 - [ ] Add validation to configuration
 - [ ] Add help to configuration
 - [ ] Test error flows in thunks

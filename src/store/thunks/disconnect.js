@@ -2,7 +2,7 @@ import { setConnector } from '../connection/actions';
 import { selectConnector } from '../connection/selectors';
 import { setError } from '../error/actions';
 import { setDevices } from '../devices/actions';
-import { resetTransaction } from '../transaction/actions';
+import { setActiveTransaction } from '../transactions/actions';
 
 export default () => async (dispatch, getState) => {
   try {
@@ -11,7 +11,7 @@ export default () => async (dispatch, getState) => {
 
     dispatch(setConnector());
     dispatch(setDevices());
-    dispatch(resetTransaction());
+    dispatch(setActiveTransaction());
   } catch (e) {
     dispatch(setError(e));
   }

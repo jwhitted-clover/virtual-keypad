@@ -5,10 +5,8 @@ import configuration from './configuration/reducer';
 import connection from './connection/reducer';
 import devices from './devices/reducer';
 import error from './error/reducer';
-import payment from './payment/reducer';
 import signature from './signature/reducer';
 import status from './status/reducer';
-import transaction from './transaction/reducer';
 import transactions from './transactions/reducer';
 
 const rootReducer = combineReducers({
@@ -18,10 +16,8 @@ const rootReducer = combineReducers({
   connection,
   devices,
   error,
-  payment,
   signature,
   status,
-  transaction,
   transactions,
 });
 

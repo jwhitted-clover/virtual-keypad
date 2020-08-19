@@ -1,5 +1,10 @@
 import * as CONST from './constants';
 
+export const setActiveTransaction = ({ id, type, amount, tipAmount } = {}) => ({
+  type: CONST.TRANSACTIONS_ACTIVE,
+  payload: { id, type, amount, tipAmount },
+});
+
 export const removeTransaction = id => ({
   type: CONST.TRANSACTIONS_REMOVE,
   payload: id,

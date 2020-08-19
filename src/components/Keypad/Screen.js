@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 import { sentenceCase } from 'change-case';
 
 import { currency } from '../../common';
-import { selectStatus, selectBuffer, selectTransactionType, selectTransactionAmount } from '../../store';
+import { selectStatus, selectBuffer, selectActiveTransactionType, selectActiveTransactionAmount } from '../../store';
 import Signature from './Signature';
 
 export default () => {
   const status = useSelector(selectStatus);
   const buffer = useSelector(selectBuffer);
-  const tranType = useSelector(selectTransactionType);
-  const tranAmount = useSelector(selectTransactionAmount);
+  const tranType = useSelector(selectActiveTransactionType);
+  const tranAmount = useSelector(selectActiveTransactionAmount);
 
   return (
     <div className="Screen alert alert-secondary">

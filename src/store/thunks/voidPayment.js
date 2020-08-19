@@ -3,25 +3,23 @@ import Clover from 'remote-pay-cloud';
 import { ACTION, TRANSACTION } from '../../common/constants';
 import { setError } from '../error/actions';
 import { selectConnector } from '../connection/selectors';
-import { setTransactionType, setTransactionAmount } from '../transaction/actions';
 import { setActions } from '../actions/actions';
 import { setStatus } from '../status/actions';
-import { selectPayment } from '../payment/selectors';
+import { setActiveTransaction } from '../transactions';
 
-export default action => async (dispatch, getState) => {
+export default payment => async (dispatch, getState) => {
   try {
-    dispatch({ ...action, type: `@@action/${ACTION.VOID_PAYMENT}` });
+    dispatch({ type: `@@action/${ACTION.VOID_PAYMENT}`, payload: payment });
 
-    const state = getState();
-    const { id, orderId, amount, tipAmount } = selectPayment(state);
-    const connector = selectConnector(state);
+    const { id, externalPaymentId, orderId, amount, tipAmount } = payment;
+    const connector = selectConnector(getState());
 
     dispatch(setActions());
     dispatch(setStatus('Processing...'));
     if (!id) throw new Error('No payment was specified');
 
-    dispatch(setTransactionType(TRANSACTION.VOID));
-    dispatch(setTransactionAmount((amount || 0) + (tipAmount || 0)));
+    const type = TRANSACTION.VOID;
+    dispatch(setActiveTransaction({ id: externalPaymentId, type, amount, tipAmount }));
 
     const request = new Clover.remotepay.VoidPaymentRequest();
     request.setPaymentId(id);

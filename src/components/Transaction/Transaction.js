@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useToasts } from 'react-toast-notifications';
 
 import { currency, card, TRANSACTION } from '../../common';
-import { voidPayment, setError, setBuffer, transaction as doTransaction } from '../../store';
+import { voidPayment, setError, setBuffer, transaction as doTransaction, hideTransaction } from '../../store';
 import parseAmounts from './parseAmounts';
 
 export default ({ transaction }) => {
@@ -26,6 +26,7 @@ export default ({ transaction }) => {
   const onVoid = async () => {
     try {
       removeToast(transaction.id);
+      await dispatch(hideTransaction(transaction.id));
       await dispatch(voidPayment(payment));
     } catch (e) {
       await dispatch(setError(e));

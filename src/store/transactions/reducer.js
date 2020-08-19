@@ -4,40 +4,78 @@ import { TRANSACTION } from '../../common';
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case CONST.TRANSACTIONS_ACTIVE: {
+      if (payload.id) {
+        const cur = state.data[payload.id] || {};
+
+        return {
+          ...state,
+          active: payload.id,
+          data: {
+            ...state.data,
+            [payload.id]: {
+              ...state.data[payload.id],
+              id: payload.id,
+              timestamp: Date.now(),
+              type: payload.type || cur.type,
+              amount: payload.amount || cur.amount || 0,
+              tipAmount: payload.tipAmount || cur.tipAmount || 0,
+            },
+          },
+        };
+      }
+      return {
+        ...state,
+        active: '',
+      };
+    }
     case CONST.TRANSACTIONS_HIDE:
       return {
         ...state,
-        [payload]: {
-          ...state[payload],
-          visible: false,
+        data: {
+          ...state.data,
+          [payload]: {
+            ...state.data[payload],
+            visible: false,
+          },
         },
       };
     case CONST.TRANSACTIONS_SHOW:
       return {
         ...state,
-        [payload]: {
-          ...state[payload],
-          visible: true,
+        data: {
+          ...state.data,
+          [payload]: {
+            ...state.data[payload],
+            visible: true,
+          },
         },
       };
     case CONST.TRANSACTIONS_REMOVE: {
-      const newState = { ...state };
-      delete newState[payload];
+      const newState = {
+        ...state,
+        data: { ...state.data },
+      };
+      delete newState.data[payload];
       return newState;
     }
     case CONST.TRANSACTIONS_UPDATE: {
-      const cur = state[payload.id] || {};
+      const cur = state.data[payload.id] || {};
 
       return {
         ...state,
-        [payload.id]: {
-          ...cur,
-          id: payload.id,
-          visible: payload.visible || cur.visible || false,
-          amount: payload.amount || cur.amount || 0,
-          tipAmount: payload.tipAmount || cur.tipAmount || 0,
-          type: payload.type || cur.type || '',
-          payment: payload.payment || cur.payment || null,
+        data: {
+          ...state.data,
+          [payload.id]: {
+            ...cur,
+            id: payload.id,
+            timestamp: Date.now(),
+            visible: payload.visible || cur.visible || false,
+            amount: payload.amount || cur.amount || 0,
+            tipAmount: payload.tipAmount || cur.tipAmount || 0,
+            type: payload.type || cur.type || '',
+            payment: payload.payment || cur.payment || null,
+          },
         },
       };
     }
@@ -45,12 +83,17 @@ export default (state = initialState, { type, payload }) => {
       if (payload.success) {
         return {
           ...state,
-          [payload.payment.externalPaymentId]: {
-            ...state[payload.payment.externalPaymentId],
-            id: payload.payment.externalPaymentId,
-            visible: true,
-            type: TRANSACTION.SALE,
-            payment: payload.payment,
+          active: '',
+          data: {
+            ...state.data,
+            [payload.payment.externalPaymentId]: {
+              ...state.data[payload.payment.externalPaymentId],
+              id: payload.payment.externalPaymentId,
+              timestamp: Date.now(),
+              visible: true,
+              type: TRANSACTION.SALE,
+              payment: payload.payment,
+            },
           },
         };
       }
@@ -60,17 +103,23 @@ export default (state = initialState, { type, payload }) => {
       if (payload.success) {
         return {
           ...state,
-          [payload.payment.externalPaymentId]: {
-            ...state[payload.payment.externalPaymentId],
-            id: payload.payment.externalPaymentId,
-            visible: true,
-            type: TRANSACTION.VOID,
-            payment: payload.payment,
+          active: '',
+          data: {
+            ...state.data,
+            [payload.payment.externalPaymentId]: {
+              ...state.data[payload.payment.externalPaymentId],
+              id: payload.payment.externalPaymentId,
+              timestamp: Date.now(),
+              visible: true,
+              type: TRANSACTION.VOID,
+              payment: payload.payment,
+            },
           },
         };
       }
       return state;
     }
+
     default:
       return state;
   }
