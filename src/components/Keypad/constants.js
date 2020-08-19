@@ -24,3 +24,13 @@ export const ACTION_CREATOR = {
   [ACTION.SHOW_WELCOME]: showWelcome,
   [ACTION.TRANSACTION]: transaction,
 };
+
+export const MODE = {
+  TRANSACTION: 'TRANSACTION',
+  HISTORY: 'HISTORY',
+};
+
+export const MODE_TEXT = {
+  [MODE.TRANSACTION]: 'Keypad',
+  [MODE.HISTORY]: 'History',
+};

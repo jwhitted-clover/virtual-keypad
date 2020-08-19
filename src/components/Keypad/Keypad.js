@@ -1,18 +1,19 @@
-import React, { useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import { disconnect } from '../../store';
-import { Logo, Power } from '../SVG';
+import { Logo } from '../SVG';
+import { MODE } from './constants';
 import { selectVisible } from './selectors';
 import Screen from './Screen';
 import Keys from './Keys';
+import Menu from './Menu';
+import History from './History';
 import './styles.scss';
 
 export default () => {
-  const dispatch = useDispatch();
   const visible = useSelector(selectVisible);
 
-  const click = useCallback(() => dispatch(disconnect()), [dispatch]);
+  const [mode, setMode] = useState(MODE.TRANSACTION);
 
   if (!visible) return null;
 
@@ -21,13 +22,12 @@ export default () => {
       <div className="card-header">
         <Logo />
         <h3>Virtual Keypad</h3>
-        <button className="btn btn-sm btn-outline-dark" onClick={click} title="Disconnect">
-          <Power />
-        </button>
+        <Menu mode={mode} setMode={setMode} />
       </div>
       <div className="card-body">
-        <Screen />
-        <Keys />
+        {mode === MODE.TRANSACTION && <Screen />}
+        {mode === MODE.TRANSACTION && <Keys />}
+        {mode === MODE.HISTORY && <History />}
       </div>
     </div>
   );

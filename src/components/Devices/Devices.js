@@ -35,7 +35,7 @@ export default () => {
       <div className="card-header">
         <Logo />
         <h3>Virtual Keypad</h3>
-        <button className="close" title="Cancel" onClick={cancel} disabled={disabled}>
+        <button className="close text-light" title="Cancel" onClick={cancel} disabled={disabled}>
           &times;
         </button>
       </div>

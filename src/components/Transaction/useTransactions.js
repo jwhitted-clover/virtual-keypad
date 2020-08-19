@@ -1,35 +1,14 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useToasts } from 'react-toast-notifications';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-import { selectVisiblePaymentTransactions, hideTransaction } from '../../store';
-import { TRANSACTION } from '../../common';
-import parseAmounts from './parseAmounts';
-import Transaction from './Transaction';
+import { selectVisiblePaymentTransactions } from '../../store';
+import useShowTransaction from './useShowTransaction';
 
 export default () => {
-  const dispatch = useDispatch();
   const transactions = useSelector(selectVisiblePaymentTransactions);
-  const { addToast } = useToasts();
+  const showTransaction = useShowTransaction();
 
   useEffect(() => {
-    transactions.forEach(transaction => {
-      const amounts = parseAmounts(transaction);
-
-      let appearance;
-      if (transaction.type === TRANSACTION.VOID) appearance = 'info';
-      else if (amounts.final >= amounts.start) appearance = 'success';
-      else if (amounts.final < amounts.start) appearance = 'warning';
-      else appearance = 'info';
-
-      addToast(<Transaction transaction={transaction} />, {
-        id: transaction.id,
-        appearance,
-        autoDismiss: false,
-        onDismiss: () => {
-          dispatch(hideTransaction(transaction.id));
-        },
-      });
-    });
-  }, [addToast, dispatch, transactions]);
+    transactions.forEach(showTransaction);
+  }, [transactions, showTransaction]);
 };
