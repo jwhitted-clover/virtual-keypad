@@ -16,15 +16,15 @@ export default (state = initialState, { type, payload }) => {
     case CONNECTION_SET:
       return [{ type: ACTION.DISCONNECT, payload: { description: 'Cancel' } }];
     case '@@connector/onDeviceReady':
-      return [{ type: ACTION.IDENTIFY }, { type: ACTION.RESET }, { type: ACTION.TRANSACTION }];
+      return [{ type: ACTION.IDENTIFY }, { type: ACTION.TRANSACTION }];
     case '@@connector/onResetDeviceResponse':
-      return [{ type: ACTION.IDENTIFY }, { type: ACTION.RESET }, { type: ACTION.TRANSACTION }];
+      return [{ type: ACTION.IDENTIFY }, { type: ACTION.TRANSACTION }];
     case '@@connector/onDeviceActivityStart':
       return payload.inputOptions.map(io => ({ type: ACTION.INVOKE_INPUT_OPTION, payload: io }));
     case '@@connector/onSaleResponse':
-      return [{ type: ACTION.IDENTIFY }, { type: ACTION.RESET }, { type: ACTION.TRANSACTION }];
+      return [{ type: ACTION.IDENTIFY }, { type: ACTION.TRANSACTION }];
     case '@@connector/onVoidPaymentResponse':
-      return [{ type: ACTION.IDENTIFY }, { type: ACTION.RESET }, { type: ACTION.TRANSACTION }];
+      return [{ type: ACTION.IDENTIFY }, { type: ACTION.TRANSACTION }];
     case '@@connector/onConfirmPaymentRequest':
       return [
         { type: ACTION.ACCEPT_PAYMENT, payload: { description: 'Accept', ...payload } },

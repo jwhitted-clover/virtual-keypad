@@ -32,6 +32,7 @@
 - [x] Get rid of transaction and payment stores if they are not needed
 - [x] Allow 'cancel' when attempting to connect to a device
 - [x] Support reviewing transactions in store
+- [x] Support showWelcomeScreen, resetDevice, dispose from menu
 - [ ] Support more than sale transactions
 - [ ] Add validation to configuration
 - [ ] Add help to configuration

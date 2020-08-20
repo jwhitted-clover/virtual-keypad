@@ -10,7 +10,7 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <React.StrictMode>
     <ReduxProvider store={store}>
-      <ToastProvider placement="bottom-right">
+      <ToastProvider placement="bottom-center">
         <App />
       </ToastProvider>
     </ReduxProvider>

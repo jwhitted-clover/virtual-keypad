@@ -8,7 +8,7 @@ export default action => async (dispatch, getState) => {
   try {
     dispatch({ ...action, type: 'showWelcome' });
     dispatch(setStatus('Ready'));
-    dispatch(setActions([{ type: ACTION.IDENTIFY }, { type: ACTION.RESET }, { type: ACTION.TRANSACTION }]));
+    dispatch(setActions([{ type: ACTION.IDENTIFY }, { type: ACTION.TRANSACTION }]));
 
     const connector = selectConnector(getState());
     connector.showWelcomeScreen();

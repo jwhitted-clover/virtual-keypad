@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 
-import { disconnect } from '../../store';
+import { disconnect, reset, showWelcome } from '../../store';
 import { MODE, MODE_TEXT } from './constants';
 
 export default ({ mode, setMode }) => {
@@ -11,7 +11,11 @@ export default ({ mode, setMode }) => {
 
   const toggle = useCallback(() => setShow(!show), [show, setShow]);
 
-  const power = useCallback(() => dispatch(disconnect()), [dispatch]);
+  const onShowWelcome = useCallback(() => dispatch(showWelcome()), [dispatch]);
+
+  const onReset = useCallback(() => dispatch(reset()), [dispatch]);
+
+  const onDisconnect = useCallback(() => dispatch(disconnect()), [dispatch]);
 
   useEffect(() => {
     if (show) {
@@ -52,7 +56,13 @@ export default ({ mode, setMode }) => {
           </button>
         ))}
         <div className="dropdown-divider" />
-        <button className="dropdown-item" type="button" onClick={power}>
+        <button className="dropdown-item" type="button" onClick={onShowWelcome}>
+          Show Welcome
+        </button>
+        <button className="dropdown-item" type="button" onClick={onReset}>
+          Reset Device
+        </button>
+        <button className="dropdown-item" type="button" onClick={onDisconnect}>
           Disconnect
         </button>
       </div>
