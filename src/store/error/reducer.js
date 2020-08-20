@@ -3,6 +3,8 @@ import initialState from './initialState';
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case CONST.ERROR_CLEAR:
+      return initialState;
     case CONST.ERROR_SET:
       return {
         ...state,

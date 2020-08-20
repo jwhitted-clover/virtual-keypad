@@ -5,7 +5,7 @@ import {
   selectTransactionAction,
   selectNonTransactionActions,
   appendBuffer,
-  resetBuffer,
+  clearBuffer,
   undoBuffer,
   transaction,
 } from '../../store';
@@ -95,7 +95,7 @@ export default () => {
             color="danger"
             disabled={keysDisabled}
             keyCodes={['NumpadSubtract', 'Escape']}
-            onClick={() => dispatch(resetBuffer())}
+            onClick={() => dispatch(clearBuffer())}
           >
             X
           </Key>

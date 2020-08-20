@@ -1,17 +1,19 @@
 import { ACTION } from '../../common/constants';
 import * as CONST from './constants';
-import { CONNECTION_SET_CONNECTOR } from '../connection/constants';
+import { CONNECTION_SET } from '../connection/constants';
 import initialState from './initialState';
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case CONST.ACTIONS_CLEAR:
+      return initialState;
     case CONST.ACTIONS_APPEND: {
       const found = state.some(a => a.type === payload.type && a.payload?.description === payload.payload?.description);
       return found ? state : [...state, payload];
     }
     case CONST.ACTIONS_SET:
       return payload || [];
-    case CONNECTION_SET_CONNECTOR:
+    case CONNECTION_SET:
       return [{ type: ACTION.DISCONNECT, payload: { description: 'Cancel' } }];
     case '@@connector/onDeviceReady':
       return [{ type: ACTION.IDENTIFY }, { type: ACTION.RESET }, { type: ACTION.TRANSACTION }];

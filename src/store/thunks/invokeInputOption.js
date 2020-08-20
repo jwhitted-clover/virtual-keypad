@@ -1,12 +1,11 @@
 import Clover from 'remote-pay-cloud';
 
-import { ACTION } from '../../common/constants';
 import { setError } from '../error/actions';
 import { selectConnector } from '../connection/selectors';
 
 export default action => async (dispatch, getState) => {
   try {
-    dispatch({ ...action, type: `@@action/${ACTION.INVOKE_INPUT_OPTION}` });
+    dispatch({ ...action, type: 'invokeInputOption' });
 
     const connector = selectConnector(getState());
     const request = new Clover.remotepay.InputOption();

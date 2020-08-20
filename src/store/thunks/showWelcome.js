@@ -6,7 +6,7 @@ import { setStatus } from '../status/actions';
 
 export default action => async (dispatch, getState) => {
   try {
-    dispatch({ ...action, type: `@@action/${ACTION.SHOW_WELCOME}` });
+    dispatch({ ...action, type: 'showWelcome' });
     dispatch(setStatus('Ready'));
     dispatch(setActions([{ type: ACTION.IDENTIFY }, { type: ACTION.RESET }, { type: ACTION.TRANSACTION }]));
 

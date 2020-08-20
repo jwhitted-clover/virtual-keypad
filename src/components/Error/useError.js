@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useToasts } from 'react-toast-notifications';
 
-import { selectError, setError } from '../../store';
+import { selectError, clearError } from '../../store';
 import Error from './Error';
 
-export default () => {
+export default autoDismiss => {
   const dispatch = useDispatch();
   const error = useSelector(selectError);
   const { addToast } = useToasts();
@@ -13,12 +13,13 @@ export default () => {
   useEffect(() => {
     if (error.message) {
       addToast(<Error error={error} />, {
+        id: 'error',
         appearance: 'error',
-        autoDismiss: true,
+        autoDismiss,
         onDismiss: () => {
-          dispatch(setError());
+          dispatch(clearError());
         },
       });
     }
-  }, [addToast, dispatch, error]);
+  }, [addToast, dispatch, error, autoDismiss]);
 };

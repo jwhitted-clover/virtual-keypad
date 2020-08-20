@@ -3,6 +3,8 @@ import initialState from './initialState';
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case CONST.STATUS_CLEAR:
+      return '';
     case CONST.STATUS_SET:
       return payload || '';
     case '@@connector/onDeviceReady':

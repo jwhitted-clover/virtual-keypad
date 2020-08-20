@@ -1,2 +1,3 @@
-export const ACTIONS_SET = 'ACTIONS_SET';
-export const ACTIONS_APPEND = 'ACTIONS_APPEND';
+export const ACTIONS_APPEND = 'appendActions';
+export const ACTIONS_CLEAR = 'clearActions';
+export const ACTIONS_SET = 'setActions';

@@ -1,5 +1,5 @@
-export const TRANSACTIONS_ACTIVE = 'TRANSACTIONS_ACTIVE';
-export const TRANSACTIONS_REMOVE = 'TRANSACTIONS_REMOVE';
-export const TRANSACTIONS_UPDATE = 'TRANSACTIONS_UPDATE';
-export const TRANSACTIONS_SHOW = 'TRANSACTIONS_SHOW';
-export const TRANSACTIONS_HIDE = 'TRANSACTIONS_HIDE';
+export const TRANSACTIONS_ACTIVE = 'setActiveTransaction';
+export const TRANSACTIONS_REMOVE = 'removeTransaction';
+export const TRANSACTIONS_UPDATE = 'updateTransaction';
+export const TRANSACTIONS_SHOW = 'showTransaction';
+export const TRANSACTIONS_HIDE = 'hideTransaction';

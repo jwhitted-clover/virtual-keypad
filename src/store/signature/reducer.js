@@ -3,6 +3,8 @@ import initialState from './initialState';
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case CONST.SIGNATURE_CLEAR:
+      return initialState;
     case CONST.SIGNATURE_SET:
       return {
         width: payload?.width || 0,

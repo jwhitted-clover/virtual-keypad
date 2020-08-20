@@ -3,7 +3,7 @@ import initialState from './initialState';
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case CONST.BUFFER_RESET:
+    case CONST.BUFFER_CLEAR:
       return initialState;
     case CONST.BUFFER_APPEND:
       return (state + payload).replace(/^0+/, '').slice(0, 7);

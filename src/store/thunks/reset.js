@@ -1,14 +1,13 @@
-import { ACTION } from '../../common/constants';
 import { selectConnector } from '../connection/selectors';
-import { setActions } from '../actions/actions';
+import { clearActions } from '../actions/actions';
 import { setError } from '../error/actions';
 import { setStatus } from '../status/actions';
 
 export default action => async (dispatch, getState) => {
   try {
-    dispatch({ ...action, type: `@@action/${ACTION.RESET}` });
+    dispatch({ ...action, type: 'reset' });
     dispatch(setStatus('Resetting...'));
-    dispatch(setActions());
+    dispatch(clearActions());
 
     const connector = selectConnector(getState());
     connector.resetDevice();

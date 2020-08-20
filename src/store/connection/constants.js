@@ -1,2 +1,2 @@
-export const CONNECTION_SET_CONNECTOR = 'CONNECTION_SET_CONNECTOR';
-export const CONNECTION_SET_CONNECTED = 'CONNECTION_SET_CONNECTED';
+export const CONNECTION_CLEAR = 'clearConnector';
+export const CONNECTION_SET = 'setConnector';

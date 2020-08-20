@@ -7,7 +7,7 @@ import { setStatus } from '../status/actions';
 
 export default action => async (dispatch, getState) => {
   try {
-    dispatch({ ...action, type: `@@action/${ACTION.IDENTIFY}` });
+    dispatch({ ...action, type: 'identify' });
     dispatch(setStatus('Identifying...'));
     dispatch(
       setActions([

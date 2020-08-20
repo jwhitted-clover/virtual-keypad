@@ -1,2 +1,3 @@
-export const CONFIGURATION_LOADING = 'CONFIGURATION_LOADING';
-export const CONFIGURATION_SET = 'CONFIGURATION_SET';
+export const CONFIGURATION_LOADING = 'setConfigurationLoading';
+export const CONFIGURATION_NOT_LOADING = 'setConfigurationNotLoading';
+export const CONFIGURATION_SET = 'setConfiguration';

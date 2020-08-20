@@ -11,7 +11,7 @@ import { setStatus } from '../status/actions';
 
 export default deviceId => async (dispatch, getState) => {
   try {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await dispatch({ type: 'connect', payload: deviceId });
     await dispatch(setDeviceId(deviceId));
 
     const state = getState();

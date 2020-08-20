@@ -6,7 +6,12 @@ export default (state = initialState, { type, payload }) => {
     case CONST.CONFIGURATION_LOADING:
       return {
         ...state,
-        loading: payload || undefined,
+        loading: true,
+      };
+    case CONST.CONFIGURATION_NOT_LOADING:
+      return {
+        ...state,
+        loading: undefined,
       };
     case CONST.CONFIGURATION_SET:
       return {

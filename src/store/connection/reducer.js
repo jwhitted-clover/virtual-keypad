@@ -3,17 +3,22 @@ import Clover from 'remote-pay-cloud';
 import * as CONST from './constants';
 import initialState from './initialState';
 
+const tryDispose = connector => {
+  try {
+    // eslint-disable-next-line no-unused-expressions
+    connector?.dispose();
+  } catch (e) {
+    // Do nothing
+  }
+};
+
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case CONST.CONNECTION_SET_CONNECTOR:
-      try {
-        if (state?.connector) {
-          state.connector.dispose();
-        }
-      } catch (e) {
-        // Do nothing
-      }
-
+    case CONST.CONNECTION_CLEAR:
+      tryDispose(state.connector);
+      return initialState;
+    case CONST.CONNECTION_SET:
+      tryDispose(state.connector);
       return {
         ...state,
         connector: payload,

@@ -1,1 +1,2 @@
-export const STATUS_SET = 'STATUS_SET';
+export const STATUS_CLEAR = 'clearStatus';
+export const STATUS_SET = 'setStatus';

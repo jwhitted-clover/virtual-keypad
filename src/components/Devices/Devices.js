@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectDevices, selectDeviceId, connect, setDevices } from '../../store';
+import { selectDevices, selectDeviceId, connect, clearDevices } from '../../store';
 import { selectVisible } from './selectors';
 import { Logo } from '../SVG';
 import Device from './Device';
@@ -26,7 +26,7 @@ export default () => {
     [dispatch]
   );
 
-  const cancel = () => dispatch(setDevices());
+  const cancel = () => dispatch(clearDevices());
 
   if (!visible) return null;
 

@@ -93,4 +93,12 @@
   .react-toast-notifications__toast {
     width: auto;
   }
+
+  pre {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-width: calc(100vw - 106px);
+    max-height: 75vh;
+    scroll-behavior: smooth;
+  }
 }

@@ -5,4 +5,5 @@ export default {
   friendlyId: '',
   manualCardEntry: false,
   autoConnect: false,
+  loading: undefined,
 };
