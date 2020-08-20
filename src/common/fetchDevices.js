@@ -1,4 +1,4 @@
-import { APP_BY_NAME } from './constants';
+import { APP_BY_NAME, REG_PRODUCTS } from './constants';
 import * as api from './api';
 
 const appsReducer = (o, a) => {
@@ -7,7 +7,8 @@ const appsReducer = (o, a) => {
 };
 
 export default async ({ cloverDomain, merchantId, accessToken }) => {
-  const { elements: devices } = await api.devices({ cloverDomain, merchantId, accessToken });
+  const { elements } = await api.devices({ cloverDomain, merchantId, accessToken });
+  const devices = elements.filter(d => REG_PRODUCTS.test(d.productName));
   const apps = await Promise.all(
     devices.map(({ id: deviceId }) =>
       api.deviceApps({
