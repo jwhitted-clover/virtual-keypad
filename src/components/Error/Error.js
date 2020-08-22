@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
 export default ({ error }) => {
   const { message, stack } = error;
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
 
   const expand = () => {
@@ -21,10 +23,10 @@ export default ({ error }) => {
 
   return (
     <div className={classNames('Error', { expanded })}>
-      <h5>{message}</h5>
+      <h5>{t([`ERROR~${message}`, message])}</h5>
       {!!stack && !expanded && (
         <button className="btn btn-link btn-sm" onClick={expand}>
-          Show details...
+          {t('Show details')}
         </button>
       )}
       {!!stack && expanded && (

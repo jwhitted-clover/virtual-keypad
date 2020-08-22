@@ -15,7 +15,7 @@ export default payment => async (dispatch, getState) => {
     const connector = selectConnector(getState());
 
     dispatch(clearActions());
-    dispatch(setStatus('Processing...'));
+    dispatch(setStatus('Processing…'));
     if (!id) throw new Error('No payment was specified');
 
     const type = TRANSACTION.VOID;

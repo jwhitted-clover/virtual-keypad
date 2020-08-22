@@ -1,11 +1,13 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
 import { disconnect, reset, showWelcome } from '../../store';
-import { MODE, MODE_TEXT } from './constants';
+import { MODE } from './constants';
 
 export default ({ mode, setMode }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
@@ -35,7 +37,7 @@ export default ({ mode, setMode }) => {
 
   return (
     <div className="dropdown">
-      <button type="button" className="btn btn-sm btn-outline-dark text-light" onClick={toggle}>
+      <button type="button" className="btn btn-sm btn-outline-dark text-light" onClick={toggle} title={t('Menu')}>
         ☰
       </button>
       <div className={classNames('dropdown-menu dropdown-menu-right', { show })}>
@@ -50,20 +52,20 @@ export default ({ mode, setMode }) => {
                 readOnly
               />
               <label className="custom-control-label" htmlFor={`chkMode-${m}`}>
-                {MODE_TEXT[m]}
+                {t([`MODE~${m}`, m])}
               </label>
             </div>
           </button>
         ))}
         <div className="dropdown-divider" />
         <button className="dropdown-item" type="button" onClick={onShowWelcome}>
-          Show Welcome
+          {t('Show Welcome')}
         </button>
         <button className="dropdown-item" type="button" onClick={onReset}>
-          Reset Device
+          {t('Reset Device')}
         </button>
         <button className="dropdown-item" type="button" onClick={onDisconnect}>
-          Disconnect
+          {t('Disconnect')}
         </button>
       </div>
     </div>

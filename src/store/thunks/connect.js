@@ -20,8 +20,8 @@ export default deviceId => async (dispatch, getState) => {
     const { cloverDomain, merchantId, accessToken, friendlyId } = selectConfiguration(state);
     const device = selectDevices(state).find(d => d.id === deviceId);
 
-    if (!device) throw new Error(`Device not found.`);
-    if (!device.apps[APP.CLOUD_PAY_DISPLAY]) throw new Error('Device does not have Cloud Pay Display installed.');
+    if (!device) throw new Error(`Device not found`);
+    if (!device.apps[APP.CLOUD_PAY_DISPLAY]) throw new Error('Device does not have Cloud Pay Display installed');
 
     const factory = Clover.CloverConnectorFactoryBuilder.createICloverConnectorFactory({
       [Clover.CloverConnectorFactoryBuilder.FACTORY_VERSION]: Clover.CloverConnectorFactoryBuilder.VERSION_12,
@@ -51,7 +51,7 @@ export default deviceId => async (dispatch, getState) => {
     connector.addCloverConnectorListener(listener);
 
     dispatch(setConnector(connector));
-    dispatch(setStatus('Connecting...'));
+    dispatch(setStatus('Connecting…'));
 
     connector.initializeConnection();
   } catch (e) {

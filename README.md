@@ -5,8 +5,8 @@
 [Demo](https://jwhitted-clover.github.io/virtual-keypad/)
 
 1. Install and launch `Cloud Pay Display` on target device (Flex, Mini, etc.)
-1. Install `Virtual Keypad (jwhitted-clover)` for the merchant
-1. Click `Virtual Keypad (jwhitted-clover)` from the merchant dashboard
+1. Install `Virtual Keypad` for the merchant
+1. Click `Virtual Keypad` from the merchant dashboard
 1. ???
 1. Profit
 
@@ -33,7 +33,8 @@
 - [x] Allow 'cancel' when attempting to connect to a device
 - [x] Support reviewing transactions in store
 - [x] Support showWelcomeScreen, resetDevice, dispose from menu
-- [ ] Support more than sale transactions
+- [x] i18n localization
+- [ ] Support more than sale transactions (naked refund)
 - [ ] Add validation to configuration
 - [ ] Add help to configuration
 - [ ] Test error flows in thunks

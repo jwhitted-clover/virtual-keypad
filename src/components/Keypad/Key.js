@@ -1,9 +1,10 @@
-import React, { forwardRef, useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
-import { sentenceCase } from 'change-case';
 
 export default forwardRef(
   ({ action, height, color, keyCodes, disabled, onClick, moreActions, onMoreClick, children, ...other }, ref) => {
+    const { t } = useTranslation();
     const [show, setShow] = useState(false);
     useEffect(() => {
       if (show) {
@@ -37,7 +38,14 @@ export default forwardRef(
       return undefined;
     }, [disabled, keyCodes, onClick]);
 
-    const value = action ? sentenceCase(action.payload?.description || action?.type || '') : children;
+    const value = useMemo(() => {
+      const key = action?.payload?.description || action?.type;
+      return key ? t([`ACTION~${key}`, key]) : children;
+    }, [action, children, t]);
+
+    const title = useMemo(() => {
+      return `${t('Shortcut keys')}: ${keyCodes.map(k => t([`KEY_CODE~${k}`, k])).join(', ')}`;
+    }, [keyCodes, t]);
 
     if (moreActions?.length) {
       return (
@@ -48,7 +56,7 @@ export default forwardRef(
             onClick={onClick}
             disabled={disabled}
             {...other}
-            title={`Shortcut keys: ${keyCodes.join(', ')}`}
+            title={title}
           >
             {value || <span>&nbsp;</span>}
           </button>
@@ -61,7 +69,7 @@ export default forwardRef(
           <div className={classNames('dropdown-menu bg-dark', { show })}>
             {moreActions.map((a, i) => (
               <button key={i} className="dropdown-item bg-dark text-light" onClick={() => onMoreClick(a)}>
-                {a.payload?.description || a.type}
+                {t([`ACTION~${a.payload?.description || a.type}`, a.payload?.description || a.type])}
               </button>
             ))}
           </div>
@@ -81,7 +89,7 @@ export default forwardRef(
         })}
         disabled={disabled}
         onClick={onClick}
-        title={`Shortcut keys: ${keyCodes.join(', ')}`}
+        title={title}
         {...other}
       >
         {value}

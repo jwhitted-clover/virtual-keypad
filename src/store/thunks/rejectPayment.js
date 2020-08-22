@@ -6,7 +6,7 @@ import { setStatus } from '../status/actions';
 export default action => async (dispatch, getState) => {
   try {
     dispatch({ ...action, type: 'rejectPayment' });
-    dispatch(setStatus('Rejecting payment...'));
+    dispatch(setStatus('Rejecting payment…'));
     dispatch(clearActions());
 
     const connector = selectConnector(getState());

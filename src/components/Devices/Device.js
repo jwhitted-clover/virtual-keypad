@@ -1,10 +1,14 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
+
 import { APP } from '../../common/constants';
 
 export default ({ device, active, disabled, onClick }) => {
+  const { t } = useTranslation();
+
   const cloud = device.apps[APP.CLOUD_PAY_DISPLAY];
-  const cloudStatus = cloud ? 'Cloud Pay Display is installed' : 'Cloud Pay Display is NOT installed';
+  const cloudStatus = cloud ? t('Cloud Pay Display is installed') : t('Cloud Pay Display is NOT installed');
 
   return (
     <button

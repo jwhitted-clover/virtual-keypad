@@ -9,7 +9,7 @@ import { clearSignature } from '../signature/actions';
 export default action => async (dispatch, getState) => {
   try {
     dispatch({ ...action, type: 'acceptSignature' });
-    dispatch(setStatus('Accepting signature...'));
+    dispatch(setStatus('Accepting signature…'));
     dispatch(clearActions());
     dispatch(clearSignature());
 

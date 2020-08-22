@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import QS from 'query-string';
 
 import { configure, selectConfiguration, selectConfigurationLoading } from '../../store';
@@ -7,6 +8,7 @@ import { selectVisible } from './selectors';
 import { Logo } from '../SVG';
 
 export default () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const configuration = useSelector(selectConfiguration);
   const loading = useSelector(selectConfigurationLoading);
@@ -18,7 +20,7 @@ export default () => {
   const [cloverDomain, setCloverDomain] = useState(configuration.cloverDomain || 'https://www.clover.com');
   const [merchantId, setMerchantId] = useState(qs.merchant_id || configuration.merchantId);
   const [accessToken, setAccessToken] = useState(hash.access_token || configuration.accessToken);
-  const [friendlyId, setFriendlyId] = useState(configuration.friendlyId || 'Virtual Keypad');
+  const [friendlyId, setFriendlyId] = useState(configuration.friendlyId || t('Virtual Keypad'));
   const [manualCardEntry, setManualCardEntry] = useState(configuration.manualCardEntry || false);
   const [autoConnect, setAutoConnect] = useState(configuration.autoConnect || false);
 
@@ -59,11 +61,11 @@ export default () => {
       <div className="Configuration card">
         <div className="card-header">
           <Logo />
-          <h3>Virtual Keypad</h3>
+          <h3>{t('Virtual Keypad')}</h3>
         </div>
         <div className="card-body">
           <div className="form-group">
-            <label>Clover Domain:</label>
+            <label>{t('Clover Domain')}:</label>
             <input
               type="text"
               className="form-control"
@@ -73,7 +75,7 @@ export default () => {
             />
           </div>
           <div className="form-group">
-            <label>Merchant ID:</label>
+            <label>{t('Merchant ID')}:</label>
             <input
               type="text"
               className="form-control"
@@ -83,7 +85,7 @@ export default () => {
             />
           </div>
           <div className="form-group">
-            <label>Access Token:</label>
+            <label>{t('Access Token')}:</label>
             <input
               type="text"
               className="form-control"
@@ -93,7 +95,7 @@ export default () => {
             />
           </div>
           <div className="form-group">
-            <label>Friendly ID:</label>
+            <label>{t('Friendly ID')}:</label>
             <input
               type="text"
               className="form-control"
@@ -113,7 +115,7 @@ export default () => {
                 onChange={() => setManualCardEntry(!manualCardEntry)}
               />
               <label className="custom-control-label font-weight-normal" htmlFor="chkManualCardEntry">
-                Allow Manual Card Entry
+                {t('Allow Manual Card Entry')}
               </label>
             </div>
           </div>
@@ -128,17 +130,17 @@ export default () => {
                 onChange={() => setAutoConnect(!autoConnect)}
               />
               <label className="custom-control-label font-weight-normal" htmlFor="chkAutoConnect">
-                Auto-connect
+                {t('Auto-connect')}
               </label>
             </div>
           </div>
         </div>
         <div className="card-footer">
           <button type="submit" className="btn btn-success" disabled={disabled}>
-            Submit
+            {t('Submit')}
           </button>
           <button type="reset" className="btn btn-secondary ml-2" disabled={disabled}>
-            Reset
+            {t('Reset')}
           </button>
         </div>
       </div>

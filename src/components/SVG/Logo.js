@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default ({ size = 28 }) => {
+  const { t } = useTranslation();
   return (
     <svg
       className="Logo"
@@ -12,7 +14,7 @@ export default ({ size = 28 }) => {
       aria-labelledby="svg-logo-title"
       role="image"
     >
-      <title id="svg-logo-title">Clover</title>
+      <title id="svg-logo-title">{t('Clover')}</title>
       <g id="clover-symbol-2" data-name="clover-symbol">
         <path d="M191.45,85.64A7.5,7.5,0,1,0,184,93.09h7.49V85.64Z" transform="translate(-176.46 -77.01)"></path>
         <path d="M193.61,85.64a7.5,7.5,0,1,1,7.49,7.45h-7.49V85.64Z" transform="translate(-176.46 -77.01)"></path>

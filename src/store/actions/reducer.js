@@ -27,13 +27,13 @@ export default (state = initialState, { type, payload }) => {
       return [{ type: ACTION.IDENTIFY }, { type: ACTION.TRANSACTION }];
     case '@@connector/onConfirmPaymentRequest':
       return [
-        { type: ACTION.ACCEPT_PAYMENT, payload: { description: 'Accept', ...payload } },
-        { type: ACTION.REJECT_PAYMENT, payload: { description: 'Reject', ...payload } },
+        { type: ACTION.ACCEPT_PAYMENT, payload },
+        { type: ACTION.REJECT_PAYMENT, payload },
       ];
     case '@@connector/onVerifySignatureRequest':
       return [
-        { type: ACTION.ACCEPT_SIGNATURE, payload: { description: 'Accept', ...payload } },
-        { type: ACTION.REJECT_SIGNATURE, payload: { description: 'Reject', ...payload } },
+        { type: ACTION.ACCEPT_SIGNATURE, payload },
+        { type: ACTION.REJECT_SIGNATURE, payload },
       ];
     default:
       return state;

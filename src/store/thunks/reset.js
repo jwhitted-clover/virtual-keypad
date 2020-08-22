@@ -6,7 +6,7 @@ import { setStatus } from '../status/actions';
 export default action => async (dispatch, getState) => {
   try {
     dispatch({ ...action, type: 'reset' });
-    dispatch(setStatus('Resetting...'));
+    dispatch(setStatus('Resetting…'));
     dispatch(clearActions());
 
     const connector = selectConnector(getState());

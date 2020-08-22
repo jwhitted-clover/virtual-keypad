@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { selectDevices, selectDeviceId, connect, clearDevices } from '../../store';
 import { selectVisible } from './selectors';
@@ -7,6 +8,7 @@ import { Logo } from '../SVG';
 import Device from './Device';
 
 export default () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const devices = useSelector(selectDevices);
   const deviceId = useSelector(selectDeviceId);
@@ -34,14 +36,14 @@ export default () => {
     <div className="Devices card">
       <div className="card-header">
         <Logo />
-        <h3>Virtual Keypad</h3>
-        <button className="close text-light" title="Cancel" onClick={cancel} disabled={disabled}>
+        <h3>{t('Virtual Keypad')}</h3>
+        <button className="close text-light" title={t('Cancel')} onClick={cancel} disabled={disabled}>
           &times;
         </button>
       </div>
       <div className="card-body">
         <div className="form-group">
-          <label>Select Device:</label>
+          <label>{t('Select Devices')}:</label>
           <div className="list-group">
             {devices.map(device => (
               <Device

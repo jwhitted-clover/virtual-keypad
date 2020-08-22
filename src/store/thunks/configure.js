@@ -26,11 +26,11 @@ export default ({ cloverDomain, merchantId, accessToken, friendlyId, manualCardE
     await dispatch(setDevices(devices));
 
     if (!devices.length) {
-      throw new Error('Merchant has no devices.');
+      throw new Error('Merchant has no devices');
     }
 
     if (!devices.some(a => a.apps[APP.CLOUD_PAY_DISPLAY])) {
-      throw new Error('Merchant has no devices with Cloud Pay Display installed.');
+      throw new Error('Merchant has no devices with Cloud Pay Display installed');
     }
   } catch (e) {
     await dispatch(setError(e));

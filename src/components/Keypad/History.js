@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { format, compareDesc } from 'date-fns';
 
 import { selectPaymentTransactions } from '../../store';
@@ -12,6 +13,7 @@ const parseAmount = ({ amount, tipAmount, payment }) =>
 const parseTimestamp = ({ timestamp }) => (timestamp ? format(timestamp, 'M/d h:mm a') : '??');
 
 export default () => {
+  const { t } = useTranslation();
   const transactions = useSelector(selectPaymentTransactions);
   const showTransaction = useShowTransaction();
 
@@ -24,9 +26,9 @@ export default () => {
       <table className="table table-sm table-hover table-secondary table-striped">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th className="text-right">Amount</th>
+            <th>{t('Date')}</th>
+            <th>{t('Type')}</th>
+            <th className="text-right">{t('Amount')}</th>
           </tr>
         </thead>
         <tbody>

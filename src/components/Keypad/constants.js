@@ -29,8 +29,3 @@ export const MODE = {
   TRANSACTION: 'TRANSACTION',
   HISTORY: 'HISTORY',
 };
-
-export const MODE_TEXT = {
-  [MODE.TRANSACTION]: 'Keypad',
-  [MODE.HISTORY]: 'History',
-};

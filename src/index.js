@@ -5,6 +5,7 @@ import { ToastProvider } from 'react-toast-notifications';
 
 import store from './store';
 import App from './components/App';
+import './i18n';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
