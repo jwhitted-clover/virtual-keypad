@@ -32,7 +32,7 @@ export default action => async (dispatch, getState) => {
     if (amount <= 0 || amount > 99_999_99) throw new Error('Amount is invalid');
 
     let id = Clover.CloverID.getNewId();
-    if (type === TRANSACTION.REFUND) {
+    if (type === TRANSACTION.CREDIT) {
       // HACK: externalId is ignored.  We need to use the externalReferenceId field, which is limited to 12-chars.
       id = id.slice(0, 12);
     }
@@ -52,14 +52,14 @@ export default action => async (dispatch, getState) => {
           connector.sale(request);
         }
         break;
-      case TRANSACTION.REFUND:
+      case TRANSACTION.CREDIT:
         {
           const request = new Clover.remotepay.ManualRefundRequest();
           request.setAmount(amount);
           request.setExternalId(id);
           request.setCardEntryMethods(cardEntryMethods);
 
-          dispatch(updateTransaction({ id, type: TRANSACTION.REFUND, amount }));
+          dispatch(updateTransaction({ id, type: TRANSACTION.CREDIT, amount }));
 
           connector.manualRefund(request);
         }

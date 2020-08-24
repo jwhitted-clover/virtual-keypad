@@ -31,6 +31,6 @@ export const STORAGE = 'clover/virtual-keypad';
 
 export const TRANSACTION = {
   SALE: 'SALE',
-  REFUND: 'REFUND',
+  CREDIT: 'CREDIT',
   VOID: 'VOID',
 };

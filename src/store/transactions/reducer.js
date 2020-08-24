@@ -116,7 +116,7 @@ export default (state = initialState, { type, payload }) => {
               id: payload.credit.externalReferenceId,
               timestamp: Date.now(),
               visible: true,
-              type: TRANSACTION.REFUND,
+              type: TRANSACTION.CREDIT,
               payment: payload.credit,
             },
           },

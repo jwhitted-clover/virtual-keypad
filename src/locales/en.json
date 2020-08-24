@@ -112,7 +112,7 @@
 
     "TRANSACTION": {
       "SALE": "Sale",
-      "REFUND": "Refund",
+      "CREDIT": "Credit",
       "VOID": "Void"
     },
     "Details": "Details",

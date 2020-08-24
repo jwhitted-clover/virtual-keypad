@@ -7,8 +7,10 @@ const fixCreditPayIntent = connector => {
   // HACK: CREDIT transactions do not properly relay externalId nor externalReferenceId
   // We are going to override connector.device.doTxStart and populate the externalReferenceId from the externalPaymentId
   const { doTxStart } = connector.device;
+  // eslint-disable-next-line no-param-reassign
   connector.device.doTxStart = (payIntent, order, requestInfo) => {
     if (requestInfo === 'CREDIT') {
+      // eslint-disable-next-line no-param-reassign
       payIntent.externalReferenceId = payIntent.externalPaymentId;
     }
     return doTxStart.call(connector.device, payIntent, order, requestInfo);

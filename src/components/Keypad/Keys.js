@@ -193,8 +193,14 @@ export default () => {
             onClick={() => dispatch(transaction())}
             moreText={t([`TRANSACTION~${transactionMode}`, transactionMode])}
             moreActions={[
-              { type: ACTION.TRANSACTION_MODE, payload: { description: 'Sale', mode: TRANSACTION.SALE } },
-              { type: ACTION.TRANSACTION_MODE, payload: { description: 'Refund', mode: TRANSACTION.REFUND } },
+              {
+                type: ACTION.TRANSACTION_MODE,
+                payload: { description: 'TRANSACTION~SALE', mode: TRANSACTION.SALE },
+              },
+              {
+                type: ACTION.TRANSACTION_MODE,
+                payload: { description: 'TRANSACTION~CREDIT', mode: TRANSACTION.CREDIT },
+              },
             ]}
             onMoreClick={action => onAction(action)}
           >
