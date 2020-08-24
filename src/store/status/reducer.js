@@ -14,8 +14,8 @@ export default (state = initialState, { type, payload }) => {
     case '@@connector/onDeviceActivityStart':
       return payload.message;
     case '@@connector/onSaleResponse':
-      return 'Ready';
     case '@@connector/onVoidPaymentResponse':
+    case '@@connector/onManualRefundResponse':
       return 'Ready';
     case '@@connector/onConfirmPaymentRequest':
       return payload.challenges[0].message;

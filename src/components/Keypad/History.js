@@ -8,7 +8,7 @@ import { currency } from '../../common';
 import { useShowTransaction } from '../Transaction';
 
 const parseAmount = ({ amount, tipAmount, payment }) =>
-  currency(payment ? payment.amount + payment.tipAmount : amount + tipAmount);
+  currency(payment ? (payment.amount || 0) + (payment.tipAmount || 0) : (amount || 0) + (tipAmount || 0));
 
 const parseTimestamp = ({ timestamp }) => (timestamp ? format(timestamp, 'M/d h:mm a') : '??');
 

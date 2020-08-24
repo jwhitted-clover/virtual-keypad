@@ -112,6 +112,7 @@
 
     "TRANSACTION": {
       "SALE": "Sale",
+      "REFUND": "Refund",
       "VOID": "Void"
     },
     "Details": "Details",
@@ -119,6 +120,7 @@
     "Remaining": "Remaining",
     "Payment ID": "Payment ID",
     "External ID": "External ID",
+    "External Ref": "External Ref",
     "Order ID": "Order ID",
     "Total": "Total",
     "Amount": "Amount",
@@ -151,11 +153,13 @@
 
     "ERROR": {
       "Amount is required": "Amount is required",
+      "Amount is invalid": "Amount is invalid",
       "Merchant has no devices": "Merchant has no devices",
       "Merchant has no devices with Cloud Pay Display installed": "Merchant has no devices with Cloud Pay Display installed",
       "Device not found": "Device not found",
       "Device does not have Cloud Pay Display installed": "Device does not have Cloud Pay Display installed",
-      "No payment was specified": "No payment was specified"
+      "No payment was specified": "No payment was specified",
+      "Invalid transaction type": "Invalid transaction type"
     },
 
     "STATUS": {

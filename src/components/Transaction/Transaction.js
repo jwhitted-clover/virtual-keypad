@@ -53,13 +53,21 @@ export default ({ transaction }) => {
             <th>{t('Payment ID')}:</th>
             <td>{payment.id}</td>
           </tr>
-          <tr>
-            <th>{t('External ID')}:</th>
-            <td>{payment.externalPaymentId}</td>
-          </tr>
+          {payment.externalPaymentId && (
+            <tr>
+              <th>{t('External ID')}:</th>
+              <td>{payment.externalPaymentId}</td>
+            </tr>
+          )}
+          {payment.externalReferenceId && (
+            <tr>
+              <th>{t('External Ref')}:</th>
+              <td>{payment.externalReferenceId}</td>
+            </tr>
+          )}
           <tr>
             <th>{t('Order ID')}:</th>
-            <td>{payment.order.id}</td>
+            <td>{payment.order?.id || payment.orderRef?.id}</td>
           </tr>
           {!!payment.tipAmount && (
             <tr>

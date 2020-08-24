@@ -22,8 +22,8 @@ export default (state = initialState, { type, payload }) => {
     case '@@connector/onDeviceActivityStart':
       return payload.inputOptions.map(io => ({ type: ACTION.INVOKE_INPUT_OPTION, payload: io }));
     case '@@connector/onSaleResponse':
-      return [{ type: ACTION.IDENTIFY }, { type: ACTION.TRANSACTION }];
     case '@@connector/onVoidPaymentResponse':
+    case '@@connector/onManualRefundResponse':
       return [{ type: ACTION.IDENTIFY }, { type: ACTION.TRANSACTION }];
     case '@@connector/onConfirmPaymentRequest':
       return [

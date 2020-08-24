@@ -24,3 +24,8 @@ export const updateTransaction = ({ id, type, amount, tipAmount, payment }) => (
   type: CONST.TRANSACTIONS_UPDATE,
   payload: { id, type, amount, tipAmount, payment },
 });
+
+export const setTransactionMode = ({ mode }) => ({
+  type: CONST.TRANSACTIONS_MODE,
+  payload: mode,
+});

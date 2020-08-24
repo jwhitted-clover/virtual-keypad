@@ -9,16 +9,18 @@ import {
   clearBuffer,
   undoBuffer,
   transaction,
+  selectTransactionMode,
 } from '../../store';
 import Key from './Key';
 import { ACTION_CREATOR } from './constants';
-import { ACTION } from '../../common';
+import { ACTION, TRANSACTION } from '../../common';
 
 export default () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const actions = useSelector(selectNonTransactionActions);
   const transactionAction = useSelector(selectTransactionAction);
+  const transactionMode = useSelector(selectTransactionMode);
 
   const [actionClicked, setActionClicked] = useState(false);
   const keysDisabled = useMemo(() => !transactionAction || actionClicked, [transactionAction, actionClicked]);
@@ -26,7 +28,9 @@ export default () => {
   const onAction = useCallback(
     async action => {
       setActionClicked(true);
-      if (action.type === ACTION.INVOKE_INPUT_OPTION) setTimeout(() => setActionClicked(false), 250);
+      if (action.type === ACTION.INVOKE_INPUT_OPTION || action.type === ACTION.TRANSACTION_MODE) {
+        setTimeout(() => setActionClicked(false), 250);
+      }
       await dispatch(ACTION_CREATOR[action.type](action));
     },
     [dispatch, setActionClicked]
@@ -187,6 +191,12 @@ export default () => {
             disabled={keysDisabled}
             keyCodes={['NumpadEnter', 'Enter']}
             onClick={() => dispatch(transaction())}
+            moreText={t([`TRANSACTION~${transactionMode}`, transactionMode])}
+            moreActions={[
+              { type: ACTION.TRANSACTION_MODE, payload: { description: 'Sale', mode: TRANSACTION.SALE } },
+              { type: ACTION.TRANSACTION_MODE, payload: { description: 'Refund', mode: TRANSACTION.REFUND } },
+            ]}
+            onMoreClick={action => onAction(action)}
           >
             {t('KEY~O')}
           </Key>

@@ -3,7 +3,10 @@ import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
 export default forwardRef(
-  ({ action, height, color, keyCodes, disabled, onClick, moreActions, onMoreClick, children, ...other }, ref) => {
+  (
+    { action, height, color, keyCodes, disabled, onClick, moreActions, moreText, onMoreClick, children, ...other },
+    ref
+  ) => {
     const { t } = useTranslation();
     const [show, setShow] = useState(false);
     useEffect(() => {
@@ -47,7 +50,7 @@ export default forwardRef(
       return `${t('Shortcut keys')}: ${keyCodes.map(k => t([`KEY_CODE~${k}`, k])).join(', ')}`;
     }, [keyCodes, t]);
 
-    if (moreActions?.length) {
+    if (action && moreActions?.length) {
       return (
         <div className="btn-group">
           <button
@@ -73,6 +76,40 @@ export default forwardRef(
               </button>
             ))}
           </div>
+        </div>
+      );
+    }
+
+    if (moreActions?.length) {
+      return (
+        <div className="btn-group-vertical d-flex flex-column">
+          <div className="btn-group dropdown">
+            <button
+              type="button"
+              className={classNames('btn btn-sm btn-outline-dark dropdown-toggle text-light')}
+              onClick={() => setShow(!show)}
+              disabled={disabled}
+            >
+              {moreText}
+            </button>
+            <div className={classNames('dropdown-menu dropdown-menu-right bg-dark', { show })}>
+              {moreActions.map((a, i) => (
+                <button key={i} className="dropdown-item bg-dark text-light" onClick={() => onMoreClick(a)}>
+                  {t([`ACTION~${a.payload?.description || a.type}`, a.payload?.description || a.type])}
+                </button>
+              ))}
+            </div>
+          </div>
+          <button
+            type="button"
+            className={classNames('btn btn-outline-dark h-100', `text-${color || 'light'}`)}
+            onClick={onClick}
+            disabled={disabled}
+            {...other}
+            title={title}
+          >
+            {value || <span>&nbsp;</span>}
+          </button>
         </div>
       );
     }

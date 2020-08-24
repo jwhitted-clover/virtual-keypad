@@ -4,6 +4,11 @@ import { TRANSACTION } from '../../common';
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case CONST.TRANSACTIONS_MODE:
+      return {
+        ...state,
+        mode: payload,
+      };
     case CONST.TRANSACTIONS_ACTIVE: {
       if (payload.id) {
         const cur = state.data[payload.id] || {};
@@ -93,6 +98,26 @@ export default (state = initialState, { type, payload }) => {
               visible: true,
               type: TRANSACTION.SALE,
               payment: payload.payment,
+            },
+          },
+        };
+      }
+      return state;
+    }
+    case '@@connector/onManualRefundResponse': {
+      if (payload.success) {
+        return {
+          ...state,
+          active: '',
+          data: {
+            ...state.data,
+            [payload.credit.externalReferenceId]: {
+              ...state.data[payload.credit.externalReferenceId],
+              id: payload.credit.externalReferenceId,
+              timestamp: Date.now(),
+              visible: true,
+              type: TRANSACTION.REFUND,
+              payment: payload.credit,
             },
           },
         };

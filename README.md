@@ -34,7 +34,7 @@
 - [x] Support reviewing transactions in store
 - [x] Support showWelcomeScreen, resetDevice, dispose from menu
 - [x] i18n localization
-- [ ] Support more than sale transactions (naked refund)
+- [x] Support more than sale transactions (naked refund)
 - [ ] Add validation to configuration
 - [ ] Add help to configuration
 - [ ] Test error flows in thunks

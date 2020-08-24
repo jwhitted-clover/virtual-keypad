@@ -20,3 +20,5 @@ export const selectPaymentTransactions = createSelector(selectTransactions, tran
 export const selectVisiblePaymentTransactions = createSelector(selectPaymentTransactions, transactions =>
   transactions.filter(t => t.visible)
 );
+
+export const selectTransactionMode = createSelector(selectRawTransactions, ({ mode }) => mode);

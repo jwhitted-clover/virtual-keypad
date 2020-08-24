@@ -8,6 +8,7 @@ import {
   rejectPayment,
   rejectSignature,
   reset,
+  setTransactionMode,
   showWelcome,
   transaction,
 } from '../../store';
@@ -23,6 +24,7 @@ export const ACTION_CREATOR = {
   [ACTION.RESET]: reset,
   [ACTION.SHOW_WELCOME]: showWelcome,
   [ACTION.TRANSACTION]: transaction,
+  [ACTION.TRANSACTION_MODE]: ({ payload }) => setTransactionMode(payload),
 };
 
 export const MODE = {
