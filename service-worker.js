@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/virtual-keypad/precache-manifest.642949de80f37b573ab23a139e7a7b1e.js"
+  "/virtual-keypad/precache-manifest.60bc6e7fa9408a3e525dbb02f0a53905.js"
 );
 
 self.addEventListener('message', (event) => {
