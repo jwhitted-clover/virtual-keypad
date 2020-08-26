@@ -23,6 +23,8 @@ export const APP_NAME = {
 
 export const APP_BY_NAME = Object.fromEntries(Object.entries(APP_NAME).map(arr => arr.reverse()));
 
+export const DOMAIN = 'https://www.clover.com';
+
 export const REG_PRODUCTS = /^(Flex|Mini|Mobile)/i;
 
 export const REMOTE_APPLICATION_ID = 'virtual-keypad';

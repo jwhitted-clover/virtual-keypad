@@ -20,8 +20,6 @@ export default (state = initialState, { type, payload }) => {
         merchantId: payload.merchantId || '',
         accessToken: payload.accessToken || '',
         friendlyId: payload.friendlyId || '',
-        manualCardEntry: payload.manualCardEntry || false,
-        autoConnect: payload.autoConnect || false,
       };
     default:
       return state;

@@ -35,6 +35,7 @@
 - [x] Support showWelcomeScreen, resetDevice, dispose from menu
 - [x] i18n localization
 - [x] Support more than sale transactions (naked refund)
+- [x] Initially hide configuration screen
 - [ ] Add validation to configuration
 - [ ] Add help to configuration
 - [ ] Test error flows in thunks

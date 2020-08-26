@@ -5,21 +5,16 @@ import { setConfiguration, setConfigurationLoading, setConfigurationNotLoading }
 import { setDevices } from '../devices/actions';
 import { setError } from '../error/actions';
 
-export default ({ cloverDomain, merchantId, accessToken, friendlyId, manualCardEntry, autoConnect }) => async (
-  dispatch,
-  getState
-) => {
+export default ({ cloverDomain, merchantId, accessToken, friendlyId }) => async (dispatch, getState) => {
   try {
     dispatch({
       type: 'configure',
-      payload: { cloverDomain, merchantId, accessToken, friendlyId, manualCardEntry, autoConnect },
+      payload: { cloverDomain, merchantId, accessToken, friendlyId },
     });
 
     await dispatch(setConfigurationLoading());
 
-    await dispatch(
-      setConfiguration({ cloverDomain, merchantId, accessToken, friendlyId, manualCardEntry, autoConnect })
-    );
+    await dispatch(setConfiguration({ cloverDomain, merchantId, accessToken, friendlyId }));
     persist(getState());
 
     const devices = await fetchDevices({ cloverDomain, merchantId, accessToken });

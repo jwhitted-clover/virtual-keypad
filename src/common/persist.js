@@ -4,14 +4,16 @@ import initialDevices from '../store/devices/initialState';
 export default ({ configuration, devices }) =>
   localStorage.setItem(
     STORAGE,
-    JSON.stringify({
-      configuration: {
-        ...configuration,
-        loading: undefined,
-      },
-      devices: {
-        ...initialDevices,
-        selected: devices.selected,
-      },
-    })
+    btoa(
+      JSON.stringify({
+        configuration: {
+          ...configuration,
+          loading: undefined,
+        },
+        devices: {
+          ...initialDevices,
+          selected: devices.selected,
+        },
+      })
+    )
   );
