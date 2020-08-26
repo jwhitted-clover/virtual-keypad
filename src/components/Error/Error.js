@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
@@ -25,9 +26,9 @@ export default ({ error }) => {
     <div className={classNames('Error', { expanded })}>
       <h5>{t([`ERROR~${message}`, message])}</h5>
       {!!stack && !expanded && (
-        <button className="btn btn-link btn-sm" onClick={expand}>
+        <Button color="link" size="small" onClick={expand}>
           {t('Show details')}
-        </button>
+        </Button>
       )}
       {!!stack && expanded && (
         <pre className="mb-0">

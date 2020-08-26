@@ -1,73 +1,37 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
-import classNames from 'classnames';
 
 import { disconnect, reset, showWelcome } from '../../store';
+import { CheckboxField } from '../Fields';
 import { MODE } from './constants';
 
 export default ({ mode, setMode }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-
   const toggle = useCallback(() => setShow(!show), [show, setShow]);
-
   const onShowWelcome = useCallback(() => dispatch(showWelcome()), [dispatch]);
-
   const onReset = useCallback(() => dispatch(reset()), [dispatch]);
-
   const onDisconnect = useCallback(() => dispatch(disconnect()), [dispatch]);
 
-  useEffect(() => {
-    if (show) {
-      const hide = () => setShow(false);
-      document.addEventListener('click', hide);
-      document.addEventListener('touch', hide);
-      document.addEventListener('keydown', hide);
-
-      return () => {
-        document.removeEventListener('click', hide);
-        document.removeEventListener('touch', hide);
-        document.removeEventListener('keydown', hide);
-      };
-    }
-    return undefined;
-  }, [show, setShow]);
-
   return (
-    <div className="dropdown">
-      <button type="button" className="btn btn-sm btn-outline-dark text-light" onClick={toggle} title={t('Menu')}>
+    <ButtonDropdown isOpen={show} toggle={toggle}>
+      <DropdownToggle size="sm" outline color="dark" className="text-light" onClick={toggle} title={t('Menu')}>
         ☰
-      </button>
-      <div className={classNames('dropdown-menu dropdown-menu-right', { show })}>
+      </DropdownToggle>
+      <DropdownMenu right>
         {Object.values(MODE).map(m => (
-          <button key={m} className="dropdown-item" type="button" onClick={() => setMode(m)}>
-            <div className="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                className="custom-control-input"
-                id={`chkMode-${m}`}
-                checked={m === mode}
-                readOnly
-              />
-              <label className="custom-control-label" htmlFor={`chkMode-${m}`}>
-                {t([`MODE~${m}`, m])}
-              </label>
-            </div>
-          </button>
+          <DropdownItem key={m} onClick={() => setMode(m)}>
+            <CheckboxField id={`mode-${m}`} label={t([`MODE~${m}`, m])} checked={m === mode} readOnly mb0 />
+          </DropdownItem>
         ))}
-        <div className="dropdown-divider" />
-        <button className="dropdown-item" type="button" onClick={onShowWelcome}>
-          {t('Show Welcome')}
-        </button>
-        <button className="dropdown-item" type="button" onClick={onReset}>
-          {t('Reset Device')}
-        </button>
-        <button className="dropdown-item" type="button" onClick={onDisconnect}>
-          {t('Disconnect')}
-        </button>
-      </div>
-    </div>
+        <DropdownItem divider />
+        <DropdownItem onClick={onShowWelcome}>{t('Show Welcome')}</DropdownItem>
+        <DropdownItem onClick={onReset}>{t('Reset Device')}</DropdownItem>
+        <DropdownItem onClick={onDisconnect}>{t('Disconnect')}</DropdownItem>
+      </DropdownMenu>
+    </ButtonDropdown>
   );
 };

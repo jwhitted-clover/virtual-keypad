@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Card, CardHeader, CardBody } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 
 import { selectDevices, selectDeviceId, connect, clearDevices } from '../../store';
@@ -33,15 +34,15 @@ export default () => {
   if (!visible) return null;
 
   return (
-    <div className="Devices card">
-      <div className="card-header">
+    <Card className="Devices">
+      <CardHeader>
         <Logo />
         <h3>{t('Virtual Keypad')}</h3>
         <button className="close text-light" title={t('Cancel')} onClick={cancel} disabled={disabled}>
           &times;
         </button>
-      </div>
-      <div className="card-body">
+      </CardHeader>
+      <CardBody>
         <div className="form-group">
           <label>{t('Select Devices')}:</label>
           <div className="list-group">
@@ -56,7 +57,7 @@ export default () => {
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </CardBody>
+    </Card>
   );
 };

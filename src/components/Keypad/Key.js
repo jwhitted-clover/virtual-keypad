@@ -1,4 +1,5 @@
-import React, { forwardRef, useEffect, useState, useMemo } from 'react';
+import React, { forwardRef, useEffect, useState, useMemo, useCallback } from 'react';
+import { Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
@@ -9,20 +10,8 @@ export default forwardRef(
   ) => {
     const { t } = useTranslation();
     const [show, setShow] = useState(false);
-    useEffect(() => {
-      if (show) {
-        const hide = () => setShow(false);
-        document.addEventListener('click', hide);
-        document.addEventListener('touch', hide);
-        document.addEventListener('keydown', hide);
-        return () => {
-          document.removeEventListener('click', hide);
-          document.removeEventListener('touch', hide);
-          document.removeEventListener('keydown', hide);
-        };
-      }
-      return undefined;
-    }, [show]);
+
+    const toggle = useCallback(() => setShow(cur => !cur), [setShow]);
 
     useEffect(() => {
       if (!disabled) {
@@ -35,7 +24,6 @@ export default forwardRef(
           return true;
         };
         document.addEventListener('keydown', keydown);
-
         return () => document.removeEventListener('keydown', keydown);
       }
       return undefined;
@@ -46,91 +34,80 @@ export default forwardRef(
       return key ? t([`ACTION~${key}`, key]) : children;
     }, [action, children, t]);
 
-    const title = useMemo(() => {
-      return `${t('Shortcut keys')}: ${keyCodes.map(k => t([`KEY_CODE~${k}`, k])).join(', ')}`;
-    }, [keyCodes, t]);
+    const title = useMemo(
+      () => [t('Shortcut keys'), keyCodes.map(k => t([`KEY_CODE~${k}`, k])).join(', ')].join(': '),
+      [keyCodes, t]
+    );
 
     if (action && moreActions?.length) {
       return (
-        <div className="btn-group">
-          <button
-            type="button"
-            className="btn btn-dark action rounded-left"
+        <ButtonDropdown isOpen={show} toggle={toggle}>
+          <Button
+            color="dark"
+            className="action rounded-left"
             onClick={onClick}
             disabled={disabled}
-            {...other}
             title={title}
+            {...other}
           >
             {value || <span>&nbsp;</span>}
-          </button>
-          <button
-            type="button"
-            className="btn btn-dark action dropdown-toggle"
-            onClick={() => setShow(!show)}
-            disabled={disabled}
-          ></button>
-          <div className={classNames('dropdown-menu bg-dark', { show })}>
+          </Button>
+          <DropdownToggle caret color="dark" className="action" disabled={disabled} />
+          <DropdownMenu className="bg-dark" right>
             {moreActions.map((a, i) => (
-              <button key={i} className="dropdown-item bg-dark text-light" onClick={() => onMoreClick(a)}>
+              <DropdownItem key={i} className="bg-dark text-light" onClick={() => onMoreClick(a)}>
                 {t([`ACTION~${a.payload?.description || a.type}`, a.payload?.description || a.type])}
-              </button>
+              </DropdownItem>
             ))}
-          </div>
-        </div>
+          </DropdownMenu>
+        </ButtonDropdown>
       );
     }
 
     if (moreActions?.length) {
       return (
         <div className="btn-group-vertical d-flex flex-column">
-          <div className="btn-group dropdown">
-            <button
-              type="button"
-              className={classNames('btn btn-sm btn-outline-dark dropdown-toggle text-light')}
-              onClick={() => setShow(!show)}
-              disabled={disabled}
-            >
+          <ButtonDropdown isOpen={show} toggle={toggle}>
+            <DropdownToggle caret color="dark" outline size="sm" className="text-light">
               {moreText}
-            </button>
-            <div className={classNames('dropdown-menu dropdown-menu-right bg-dark', { show })}>
+            </DropdownToggle>
+            <DropdownMenu right className="bg-dark">
               {moreActions.map((a, i) => (
-                <button key={i} className="dropdown-item bg-dark text-light" onClick={() => onMoreClick(a)}>
+                <DropdownItem key={i} className="bg-dark text-light" onClick={() => onMoreClick(a)}>
                   {t([`ACTION~${a.payload?.description || a.type}`, a.payload?.description || a.type])}
-                </button>
+                </DropdownItem>
               ))}
-            </div>
-          </div>
-          <button
-            type="button"
-            className={classNames('btn btn-outline-dark h-100', `text-${color || 'light'}`)}
+            </DropdownMenu>
+          </ButtonDropdown>
+          <Button
+            outline
+            color="dark"
+            className={classNames('h-100', `text-${color || 'light'}`)}
             onClick={onClick}
             disabled={disabled}
-            {...other}
             title={title}
+            {...other}
           >
             {value || <span>&nbsp;</span>}
-          </button>
+          </Button>
         </div>
       );
     }
 
     return (
-      <button
-        ref={ref}
-        type="button"
+      <Button
+        innerRef={ref}
         style={{ height }}
-        className={classNames('btn', `text-${color || 'light'}`, {
-          action,
-          'btn-dark': action,
-          'btn-outline-dark': !action,
-        })}
+        outline={!action}
+        color="dark"
+        className={classNames(`text-${color || 'light'}`, { action })}
         disabled={disabled}
         onClick={onClick}
         title={title}
         {...other}
       >
         {value}
-      </button>
+      </Button>
     );
   }
 );

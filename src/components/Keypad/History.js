@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { Table } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import { format, compareDesc } from 'date-fns';
 
@@ -23,7 +24,7 @@ export default () => {
 
   return (
     <div className="History">
-      <table className="table table-sm table-hover table-secondary table-striped">
+      <Table size="sm" hover className="table-secondary" striped>
         <thead>
           <tr>
             <th>{t('Date')}</th>
@@ -40,7 +41,7 @@ export default () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };

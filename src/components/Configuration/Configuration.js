@@ -1,10 +1,12 @@
 import React, { useCallback, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button, Card, CardHeader, CardBody, CardFooter } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import QS from 'query-string';
 
 import { configure, selectConfiguration, selectConfigurationLoading } from '../../store';
 import { selectVisible } from './selectors';
+import { TextField, CheckboxField } from '../Fields';
 import { Logo } from '../SVG';
 
 export default () => {
@@ -58,92 +60,66 @@ export default () => {
 
   return (
     <form onSubmit={submit} onReset={reset}>
-      <div className="Configuration card">
-        <div className="card-header">
+      <Card className="Configuration">
+        <CardHeader>
           <Logo />
           <h3>{t('Virtual Keypad')}</h3>
-        </div>
-        <div className="card-body">
-          <div className="form-group">
-            <label>{t('Clover Domain')}:</label>
-            <input
-              type="text"
-              className="form-control"
-              value={cloverDomain}
-              onChange={event => setCloverDomain(event.target.value)}
-              disabled={disabled}
-            />
-          </div>
-          <div className="form-group">
-            <label>{t('Merchant ID')}:</label>
-            <input
-              type="text"
-              className="form-control"
-              value={merchantId}
-              onChange={event => setMerchantId(event.target.value)}
-              disabled={disabled}
-            />
-          </div>
-          <div className="form-group">
-            <label>{t('Access Token')}:</label>
-            <input
-              type="text"
-              className="form-control"
-              value={accessToken}
-              onChange={event => setAccessToken(event.target.value)}
-              disabled={disabled}
-            />
-          </div>
-          <div className="form-group">
-            <label>{t('Friendly ID')}:</label>
-            <input
-              type="text"
-              className="form-control"
-              value={friendlyId}
-              onChange={event => setFriendlyId(event.target.value)}
-              disabled={disabled}
-            />
-          </div>
-          <div className="form-group">
-            <div className="custom-control custom-switch">
-              <input
-                id="chkManualCardEntry"
-                type="checkbox"
-                className="custom-control-input"
-                disabled={disabled}
-                checked={manualCardEntry}
-                onChange={() => setManualCardEntry(!manualCardEntry)}
-              />
-              <label className="custom-control-label font-weight-normal" htmlFor="chkManualCardEntry">
-                {t('Allow Manual Card Entry')}
-              </label>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="custom-control custom-switch">
-              <input
-                id="chkAutoConnect"
-                type="checkbox"
-                className="custom-control-input"
-                disabled={disabled}
-                checked={autoConnect}
-                onChange={() => setAutoConnect(!autoConnect)}
-              />
-              <label className="custom-control-label font-weight-normal" htmlFor="chkAutoConnect">
-                {t('Auto-connect')}
-              </label>
-            </div>
-          </div>
-        </div>
-        <div className="card-footer">
-          <button type="submit" className="btn btn-success" disabled={disabled}>
+        </CardHeader>
+        <CardBody>
+          <TextField
+            id="cloverDomain"
+            label={t('Clover Domain')}
+            value={cloverDomain}
+            onChange={setCloverDomain}
+            disabled={disabled}
+          />
+          <TextField
+            id="merchantId"
+            label={t('Merchant ID')}
+            value={merchantId}
+            onChange={setMerchantId}
+            disabled={disabled}
+          />
+          <TextField
+            id="accessToken"
+            label={t('Access Token')}
+            value={accessToken}
+            onChange={setAccessToken}
+            disabled={disabled}
+          />
+          <TextField
+            id="friendlyId"
+            label={t('Friendly ID')}
+            value={friendlyId}
+            onChange={setFriendlyId}
+            disabled={disabled}
+          />
+          <CheckboxField
+            switch
+            id="manualCardEntry"
+            label={t('Allow Manual Card Entry')}
+            checked={manualCardEntry}
+            onChange={setManualCardEntry}
+            disabled={disabled}
+          />
+          <CheckboxField
+            switch
+            id="autoConnect"
+            label={t('Auto-connect')}
+            checked={autoConnect}
+            onChange={setAutoConnect}
+            disabled={disabled}
+          />
+        </CardBody>
+        <CardFooter>
+          <Button type="submit" color="success" disabled={disabled}>
             {t('Submit')}
-          </button>
-          <button type="reset" className="btn btn-secondary ml-2" disabled={disabled}>
+          </Button>
+          <Button type="reset" color="secondary" className="ml-2" disabled={disabled}>
             {t('Reset')}
-          </button>
-        </div>
-      </div>
+          </Button>
+        </CardFooter>
+      </Card>
     </form>
   );
 };

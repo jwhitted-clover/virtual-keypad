@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
+import { Button, Table } from 'reactstrap';
 import { useToasts } from 'react-toast-notifications';
 import { useTranslation } from 'react-i18next';
 
@@ -47,7 +48,7 @@ export default ({ transaction }) => {
       <h5>
         {t([`TRANSACTION~${type}`, type])} {t('Details')}
       </h5>
-      <table className="table table-sm small mb-0">
+      <Table size="sm" className="small mb-0">
         <tbody>
           <tr>
             <th>{t('Payment ID')}:</th>
@@ -101,17 +102,17 @@ export default ({ transaction }) => {
             </td>
           </tr>
         </tbody>
-      </table>
+      </Table>
       {transaction.type === TRANSACTION.SALE && (
         <div>
           {amounts.partial && (
-            <button className="btn btn-primary btn-sm mr-1" onClick={onRemaining}>
+            <Button color="primary" size="sm" className="mr-1" onClick={onRemaining}>
               {t('Process')} {currency(amounts.remaining)}
-            </button>
+            </Button>
           )}
-          <button key="void" className="btn btn-danger btn-sm" onClick={onVoid}>
+          <Button color="danger" size="sm" onClick={onVoid}>
             {t('Void')}
-          </button>
+          </Button>
         </div>
       )}
     </div>

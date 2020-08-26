@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Card, CardHeader, CardBody } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 
 import { Logo } from '../SVG';
@@ -20,17 +21,17 @@ export default () => {
   if (!visible) return null;
 
   return (
-    <div className="Keypad card">
-      <div className="card-header">
+    <Card className="Keypad">
+      <CardHeader>
         <Logo />
         <h3>{t('Virtual Keypad')}</h3>
         <Menu mode={mode} setMode={setMode} />
-      </div>
-      <div className="card-body">
+      </CardHeader>
+      <CardBody>
         {mode === MODE.TRANSACTION && <Screen />}
         {mode === MODE.TRANSACTION && <Keys />}
         {mode === MODE.HISTORY && <History />}
-      </div>
-    </div>
+      </CardBody>
+    </Card>
   );
 };
