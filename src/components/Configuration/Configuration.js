@@ -68,6 +68,7 @@ export default () => {
         <CardBody>
           <TextField
             id="cloverDomain"
+            type="url"
             label={t('Clover Domain')}
             value={cloverDomain}
             onChange={setCloverDomain}
@@ -76,6 +77,11 @@ export default () => {
           <TextField
             id="merchantId"
             label={t('Merchant ID')}
+            pattern="^[a-zA-Z0-9]{13}$"
+            autoCorrect="off"
+            autoComplete="off"
+            autoCapitalize="off"
+            spellCheck="false"
             value={merchantId}
             onChange={setMerchantId}
             disabled={disabled}
@@ -83,6 +89,11 @@ export default () => {
           <TextField
             id="accessToken"
             label={t('Access Token')}
+            pattern="^[a-fA-F0-9]{8}(-?[a-fA-F0-9]{4}){3}-?[a-fA-F0-9]{12}$"
+            autoCorrect="off"
+            autoComplete="off"
+            autoCapitalize="off"
+            spellCheck="false"
             value={accessToken}
             onChange={setAccessToken}
             disabled={disabled}
