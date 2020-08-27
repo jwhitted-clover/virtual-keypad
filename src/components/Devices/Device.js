@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Tooltip } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
@@ -8,6 +8,7 @@ import { APP } from '../../common/constants';
 export default ({ device, active, disabled, onClick }) => {
   const { t } = useTranslation();
   const [show, setShow] = useState(false);
+  const id = useMemo(() => `device-${device.id}`, [device.id]);
 
   const toggle = event => {
     if (event) {
@@ -38,7 +39,7 @@ export default ({ device, active, disabled, onClick }) => {
         {device.productName} {device.serial}
       </div>
       <span
-        id={device.id}
+        id={id}
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
         onClick={toggle}
@@ -52,7 +53,7 @@ export default ({ device, active, disabled, onClick }) => {
       >
         ☁️
       </span>
-      <Tooltip isOpen={show} target={device.id} toggle={toggle} placement="left">
+      <Tooltip isOpen={show} target={id} toggle={toggle} placement="left">
         <span className="small">{cloudStatus}</span>
       </Tooltip>
     </button>
