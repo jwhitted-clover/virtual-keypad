@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Tooltip } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
@@ -6,9 +7,18 @@ import { APP } from '../../common/constants';
 
 export default ({ device, active, disabled, onClick }) => {
   const { t } = useTranslation();
+  const [show, setShow] = useState(false);
+
+  const toggle = event => {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setShow(!show);
+  };
 
   const cloud = device.apps[APP.CLOUD_PAY_DISPLAY];
-  const cloudStatus = cloud ? t('Cloud Pay Display is installed') : t('Cloud Pay Display is NOT installed');
+  const cloudStatus = t(`cloudPayDisplay~${cloud ? '' : 'un'}installed`);
 
   return (
     <button
@@ -28,6 +38,10 @@ export default ({ device, active, disabled, onClick }) => {
         {device.productName} {device.serial}
       </div>
       <span
+        id={device.id}
+        onMouseEnter={() => setShow(true)}
+        onMouseLeave={() => setShow(false)}
+        onClick={toggle}
         className={classNames('badge p-1', {
           'badge-secondary': disabled,
           'badge-success': !disabled && cloud,
@@ -35,10 +49,12 @@ export default ({ device, active, disabled, onClick }) => {
         })}
         role="img"
         aria-label={cloudStatus}
-        title={cloudStatus}
       >
         ☁️
       </span>
+      <Tooltip isOpen={show} target={device.id} toggle={toggle} placement="left">
+        <span className="small">{cloudStatus}</span>
+      </Tooltip>
     </button>
   );
 };

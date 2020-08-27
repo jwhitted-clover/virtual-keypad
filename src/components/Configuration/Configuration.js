@@ -70,58 +70,37 @@ export default () => {
               <TextField
                 id="cloverDomain"
                 type="url"
-                label={t('Clover Domain')}
-                autoCorrect="off"
-                autoComplete="off"
-                autoCapitalize="off"
-                spellCheck="false"
                 value={cloverDomain}
                 onChange={setCloverDomain}
                 disabled={disabled}
+                required
               />
               <TextField
                 id="merchantId"
-                label={t('Merchant ID')}
                 pattern="^[a-zA-Z0-9]{13}$"
-                autoCorrect="off"
-                autoComplete="off"
-                autoCapitalize="off"
-                spellCheck="false"
+                maxLength="13"
                 value={merchantId}
                 onChange={setMerchantId}
                 disabled={disabled}
+                required
               />
               <TextField
                 id="employeeId"
-                label={t('Employee ID')}
                 pattern="^[a-zA-Z0-9]{13}$"
-                autoCorrect="off"
-                autoComplete="off"
-                autoCapitalize="off"
-                spellCheck="false"
+                maxLength="13"
                 value={employeeId}
                 onChange={setEmployeeId}
                 disabled={disabled}
               />
               <TextField
                 id="accessToken"
-                label={t('Access Token')}
                 pattern="^[a-fA-F0-9]{8}(-?[a-fA-F0-9]{4}){3}-?[a-fA-F0-9]{12}$"
-                autoCorrect="off"
-                autoComplete="off"
-                autoCapitalize="off"
-                spellCheck="false"
                 value={accessToken}
                 onChange={setAccessToken}
                 disabled={disabled}
+                required
               />
-              <TextField
-                id="friendlyId"
-                label={t('Friendly ID')}
-                value={friendlyId}
-                onChange={setFriendlyId}
-                disabled={disabled}
-              />
+              <TextField id="friendlyId" value={friendlyId} onChange={setFriendlyId} disabled={disabled} />
             </CardBody>
             <CardFooter>
               <Button type="submit" color="success" disabled={disabled}>

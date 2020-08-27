@@ -3,20 +3,34 @@
     "Virtual Keypad": "Virtual Keypad",
     "Clover": "Clover",
 
-    "Clover Domain": "Clover Domain",
-    "Merchant ID": "Merchant ID",
-    "Employee ID": "Employee ID",
-    "Access Token": "Access Token",
-    "Friendly ID": "Friendly ID",
-    "Allow Manual Card Entry": "Allow Manual Card Entry",
-    "Auto-connect": "Auto-connect",
+    "cloverDomain": {
+      "label": "Clover Domain"
+    },
+    "merchantId": {
+      "label": "Merchant ID",
+      "title": "The Merchant ID should be a 13-character alphanumeric value.\nExample: ABC1234567890"
+    },
+    "employeeId": {
+      "label": "Employee ID",
+      "title": "The Employee ID should be a 13-character alphanumeric value.\nExample: ABC1234567890"
+    },
+    "accessToken": {
+      "label": "Access Token",
+      "title": "The Access Token should be a 32-character UUID value.\nExample: 12345678-ABCD-1234-ABCD-1234-1234567890AB\nExample: 12345678abcd1234abcd12341234567890ab"
+    },
+    "friendlyId": {
+      "label": "Friendly ID"
+    },
+
     "Submit": "Submit",
     "Reset": "Reset",
-
     "Cancel": "Cancel",
-    "Select Devices": "Select Devices",
-    "Cloud Pay Display is installed": "Cloud Pay Display is installed",
-    "Cloud Pay Display is NOT installed": "Cloud Pay Display is NOT installed",
+
+    "Select Devices": "Select Device",
+    "cloudPayDisplay": {
+      "installed": "Cloud Pay Display is installed",
+      "uninstalled": "Cloud Pay Display is NOT installed"
+    },
 
     "Show details": "Show details…",
 

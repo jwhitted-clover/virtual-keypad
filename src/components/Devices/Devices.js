@@ -44,7 +44,7 @@ export default () => {
       </CardHeader>
       <CardBody>
         <div className="form-group">
-          <label>{t('Select Devices')}:</label>
+          <label>{t('Select Device')}:</label>
           <div className="list-group">
             {devices.map(device => (
               <Device

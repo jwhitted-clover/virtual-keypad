@@ -41,7 +41,7 @@
 - [ ] Add help to configuration
 - [ ] Test error flows in thunks
 - [ ] Add timeouts to transactions
-- [ ] smartling translations
+- [ ] smartling translations (ensure nbsp Alt+0160 in titles)
 - [ ] Complete README
 - [ ] Enable Service Worker
 - [ ] Move repo to github.com/clover/virtual-keypad
