@@ -5,6 +5,7 @@ export * from './configuration';
 export * from './connection';
 export * from './devices';
 export * from './error';
+export * from './settings';
 export * from './signature';
 export * from './status';
 export * from './thunks';

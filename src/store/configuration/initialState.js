@@ -22,6 +22,7 @@ const getCloverDomain = () => {
 export default {
   cloverDomain: getCloverDomain(),
   merchantId: qs.merchant_id || storage?.configuration?.merchantId || '',
+  employeeId: qs.employee_id || storage?.configuration?.employeeId || '',
   accessToken: hash.access_token || storage?.configuration?.accessToken || '',
   friendlyId: 'Virtual Keypad',
   loading: undefined,

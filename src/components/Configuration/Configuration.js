@@ -17,6 +17,7 @@ export default () => {
 
   const [cloverDomain, setCloverDomain] = useState(configuration.cloverDomain);
   const [merchantId, setMerchantId] = useState(configuration.merchantId);
+  const [employeeId, setEmployeeId] = useState(configuration.employeeId);
   const [accessToken, setAccessToken] = useState(configuration.accessToken);
   const [friendlyId, setFriendlyId] = useState(configuration.friendlyId);
 
@@ -29,12 +30,12 @@ export default () => {
       try {
         event.preventDefault();
         setSubmitting(true);
-        await dispatch(configure({ cloverDomain, merchantId, accessToken, friendlyId }));
+        await dispatch(configure({ cloverDomain, merchantId, employeeId, accessToken, friendlyId }));
       } finally {
         setSubmitting(false);
       }
     },
-    [dispatch, cloverDomain, merchantId, accessToken, friendlyId]
+    [dispatch, cloverDomain, merchantId, employeeId, accessToken, friendlyId]
   );
 
   const reset = useCallback(
@@ -42,10 +43,11 @@ export default () => {
       event.preventDefault();
       setCloverDomain(configuration.cloverDomain);
       setMerchantId(configuration.merchantId);
+      setEmployeeId(configuration.employeeId);
       setAccessToken(configuration.accessToken);
       setFriendlyId(configuration.friendlyId);
     },
-    [configuration, setCloverDomain, setMerchantId, setAccessToken, setFriendlyId]
+    [configuration, setCloverDomain, setMerchantId, setEmployeeId, setAccessToken, setFriendlyId]
   );
 
   if (!visible) return null;
@@ -87,6 +89,18 @@ export default () => {
                 spellCheck="false"
                 value={merchantId}
                 onChange={setMerchantId}
+                disabled={disabled}
+              />
+              <TextField
+                id="employeeId"
+                label={t('Employee ID')}
+                pattern="^[a-zA-Z0-9]{13}$"
+                autoCorrect="off"
+                autoComplete="off"
+                autoCapitalize="off"
+                spellCheck="false"
+                value={employeeId}
+                onChange={setEmployeeId}
                 disabled={disabled}
               />
               <TextField

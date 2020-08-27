@@ -25,6 +25,12 @@ export const APP_BY_NAME = Object.fromEntries(Object.entries(APP_NAME).map(arr =
 
 export const DOMAIN = 'https://www.clover.com';
 
+export const PERMISSION = {
+  MANUAL_ENTRY_ALLOWED: 'MANUAL_ENTRY_ALLOWED',
+  PERFORM_MANUAL_REFUND: 'PERFORM_MANUAL_REFUND',
+  VOID_PAYMENTS: 'VOID_PAYMENTS',
+};
+
 export const REG_PRODUCTS = /^(Flex|Mini|Mobile)/i;
 
 export const REMOTE_APPLICATION_ID = 'virtual-keypad';

@@ -15,8 +15,19 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         message: `Device Error ${payload.message}`,
-        stack: null,
+        stack: JSON.stringify(payload, null, 2),
       };
+    case '@@connector/onManualRefundResponse':
+    case '@@connector/onSaleResponse':
+    case '@@connector/onVoidPaymentResponse':
+      if (!payload.success) {
+        return {
+          ...state,
+          message: payload.message,
+          stack: JSON.stringify(payload, null, 2),
+        };
+      }
+      return state;
     default:
       return state;
   }

@@ -1,23 +1,25 @@
 import { APP } from '../../common/constants';
 import persist from '../../common/persist';
 import fetchDevices from '../../common/fetchDevices';
+import fetchSettings from '../../common/fetchSettings';
 import { setConfiguration, setConfigurationLoading, setConfigurationNotLoading } from '../configuration/actions';
 import { setDevices } from '../devices/actions';
 import { setError } from '../error/actions';
+import { setEmployee, setPermissions } from '../settings/actions';
 
-export default ({ cloverDomain, merchantId, accessToken, friendlyId }) => async (dispatch, getState) => {
+export default ({ cloverDomain, merchantId, employeeId, accessToken, friendlyId }) => async (dispatch, getState) => {
   try {
     dispatch({
       type: 'configure',
-      payload: { cloverDomain, merchantId, accessToken, friendlyId },
+      payload: { cloverDomain, merchantId, employeeId, accessToken, friendlyId },
     });
 
     await dispatch(setConfigurationLoading());
 
-    await dispatch(setConfiguration({ cloverDomain, merchantId, accessToken, friendlyId }));
+    await dispatch(setConfiguration({ cloverDomain, merchantId, employeeId, accessToken, friendlyId }));
     persist(getState());
 
-    const devices = await fetchDevices({ cloverDomain, merchantId, accessToken });
+    const devices = await fetchDevices({ cloverDomain, merchantId, employeeId, accessToken });
     await dispatch(setDevices(devices));
 
     if (!devices.length) {
@@ -27,6 +29,10 @@ export default ({ cloverDomain, merchantId, accessToken, friendlyId }) => async 
     if (!devices.some(a => a.apps[APP.CLOUD_PAY_DISPLAY])) {
       throw new Error('Merchant has no devices with Cloud Pay Display installed');
     }
+
+    const { employee, permissions } = await fetchSettings({ cloverDomain, merchantId, employeeId, accessToken });
+    await dispatch(setEmployee(employee));
+    await dispatch(setPermissions(permissions));
   } catch (e) {
     await dispatch(setError(e));
   } finally {

@@ -3,13 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import {
-  selectTransactionAction,
-  selectNonTransactionActions,
   appendBuffer,
   clearBuffer,
-  undoBuffer,
-  transaction,
+  selectCreditEnabled,
+  selectNonTransactionActions,
+  selectTransactionAction,
   selectTransactionMode,
+  transaction,
+  undoBuffer,
 } from '../../store';
 import Key from './Key';
 import { ACTION_CREATOR } from './constants';
@@ -21,6 +22,7 @@ export default () => {
   const actions = useSelector(selectNonTransactionActions);
   const transactionAction = useSelector(selectTransactionAction);
   const transactionMode = useSelector(selectTransactionMode);
+  const creditEnabled = useSelector(selectCreditEnabled);
 
   const [actionClicked, setActionClicked] = useState(false);
   const keysDisabled = useMemo(() => !transactionAction || actionClicked, [transactionAction, actionClicked]);
@@ -49,6 +51,27 @@ export default () => {
       setKeyHeight(keyRef.current.offsetWidth);
     }
   }, [keyRef, setKeyHeight]);
+
+  const submitOptions = useMemo(
+    () =>
+      creditEnabled
+        ? {
+            moreText: t([`TRANSACTION~${transactionMode}`, transactionMode]),
+            moreActions: [
+              {
+                type: ACTION.TRANSACTION_MODE,
+                payload: { description: 'TRANSACTION~SALE', mode: TRANSACTION.SALE },
+              },
+              {
+                type: ACTION.TRANSACTION_MODE,
+                payload: { description: 'TRANSACTION~CREDIT', mode: TRANSACTION.CREDIT },
+              },
+            ],
+            onMoreClick: action => onAction(action),
+          }
+        : undefined,
+    [creditEnabled, onAction, t, transactionMode]
+  );
 
   const [action1, action2, ...moreActions] = actions;
 
@@ -191,18 +214,7 @@ export default () => {
             disabled={keysDisabled}
             keyCodes={['NumpadEnter', 'Enter']}
             onClick={() => dispatch(transaction())}
-            moreText={t([`TRANSACTION~${transactionMode}`, transactionMode])}
-            moreActions={[
-              {
-                type: ACTION.TRANSACTION_MODE,
-                payload: { description: 'TRANSACTION~SALE', mode: TRANSACTION.SALE },
-              },
-              {
-                type: ACTION.TRANSACTION_MODE,
-                payload: { description: 'TRANSACTION~CREDIT', mode: TRANSACTION.CREDIT },
-              },
-            ]}
-            onMoreClick={action => onAction(action)}
+            {...submitOptions}
           >
             {t('KEY~O')}
           </Key>

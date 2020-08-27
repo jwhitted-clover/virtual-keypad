@@ -18,6 +18,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         cloverDomain: payload.cloverDomain || '',
         merchantId: payload.merchantId || '',
+        employeeId: payload.employeeId || '',
         accessToken: payload.accessToken || '',
         friendlyId: payload.friendlyId || '',
       };
