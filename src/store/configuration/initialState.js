@@ -1,10 +1,11 @@
 import QS from 'query-string';
 
-import { DOMAIN, STORAGE } from '../../common/constants';
+import { DOMAIN } from '../../common/constants';
+import * as Storage from '../../common/Storage';
 
 const qs = QS.parse(window.location.search);
 const hash = QS.parse(window.location.hash);
-const storage = JSON.parse(atob(localStorage.getItem(STORAGE) || 'bnVsbA=='));
+const storage = Storage.get();
 
 const getCloverDomain = () => {
   if (storage?.configuration?.cloverDomain) {

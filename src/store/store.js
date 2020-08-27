@@ -1,11 +1,11 @@
-import { STORAGE } from '../common/constants';
+import * as Storage from '../common/Storage';
 import createStore from './createStore';
 import { selectConfiguration } from './configuration/selectors';
 import { configure } from './thunks';
 
 let initialState;
 try {
-  initialState = JSON.parse(atob(localStorage.getItem(STORAGE) || 'bnVsbA==')) || undefined;
+  initialState = Storage.get();
 } catch (e) {
   console.warn('Failed to initialize state from storage', e);
 } finally {

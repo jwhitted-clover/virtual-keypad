@@ -4,16 +4,13 @@ import fetchDevices from '../../common/fetchDevices';
 import fetchSettings from '../../common/fetchSettings';
 import { setConfiguration, setConfigurationLoading, setConfigurationNotLoading } from '../configuration/actions';
 import { setDevices } from '../devices/actions';
-import { setError } from '../error/actions';
+import { clearError, setError } from '../error/actions';
 import { setEmployee, setPermissions } from '../settings/actions';
 
 export default ({ cloverDomain, merchantId, employeeId, accessToken, friendlyId }) => async (dispatch, getState) => {
   try {
-    dispatch({
-      type: 'configure',
-      payload: { cloverDomain, merchantId, employeeId, accessToken, friendlyId },
-    });
-
+    await dispatch({ type: 'configure', payload: { cloverDomain, merchantId, employeeId, accessToken, friendlyId } });
+    await dispatch(clearError());
     await dispatch(setConfigurationLoading());
 
     await dispatch(setConfiguration({ cloverDomain, merchantId, employeeId, accessToken, friendlyId }));
