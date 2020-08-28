@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import { selectVisiblePaymentTransactions } from '../../store';
 import useShowTransaction from './useShowTransaction';
 
-export default () => {
+export default autoDismiss => {
   const transactions = useSelector(selectVisiblePaymentTransactions);
-  const showTransaction = useShowTransaction();
+  const showTransaction = useShowTransaction(autoDismiss);
 
   useEffect(() => {
     transactions.forEach(showTransaction);

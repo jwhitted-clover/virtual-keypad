@@ -37,7 +37,7 @@
 - [x] Support more than sale transactions (naked refund)
 - [x] Initially hide configuration screen
 - [x] Implement permissions for credits and voids
-- [ ] Add validation to configuration
+- [x] Add validation to configuration
 - [ ] Add help to configuration
 - [ ] Test error flows in thunks
 - [ ] Add timeouts to transactions

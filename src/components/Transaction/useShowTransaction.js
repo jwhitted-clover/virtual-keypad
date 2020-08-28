@@ -7,23 +7,23 @@ import { TRANSACTION } from '../../common';
 import parseAmounts from './parseAmounts';
 import Transaction from './Transaction';
 
-export default () => {
+export default autoDismiss => {
   const dispatch = useDispatch();
   const { addToast } = useToasts();
 
   return transaction => {
-    const amounts = parseAmounts(transaction);
+    const { partial } = parseAmounts(transaction);
 
     let appearance;
     if (transaction.type === TRANSACTION.VOID) appearance = 'info';
-    else if (amounts.final >= amounts.start) appearance = 'success';
-    else if (amounts.final < amounts.start) appearance = 'warning';
-    else appearance = 'info';
+    else if (partial) appearance = 'warning';
+    else appearance = 'success';
 
     addToast(<Transaction transaction={transaction} />, {
       id: transaction.id,
       appearance,
-      autoDismiss: false,
+      autoDismiss: autoDismiss && !partial,
+      autoDismissTimeout: 8000,
       onDismiss: () => {
         dispatch(hideTransaction(transaction.id));
       },

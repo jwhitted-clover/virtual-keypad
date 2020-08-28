@@ -14,7 +14,7 @@ export default () => {
   const mouse = useMouse();
   useError(mouse);
   usePreventDoubleTapZoom();
-  useTransactions();
+  useTransactions(mouse);
 
   return (
     <div className={classNames('App container maxwidth')}>
