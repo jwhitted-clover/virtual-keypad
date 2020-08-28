@@ -10,12 +10,14 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         message: payload.message,
         stack: payload.stack,
+        important: payload.important,
       };
     case '@@connector/onDeviceError':
       return {
         ...state,
         message: `Device Error ${payload.message}`,
         stack: JSON.stringify(payload, null, 2),
+        important: undefined,
       };
     case '@@connector/onManualRefundResponse':
     case '@@connector/onSaleResponse':
@@ -25,6 +27,7 @@ export default (state = initialState, { type, payload }) => {
           ...state,
           message: payload.message,
           stack: JSON.stringify(payload, null, 2),
+          important: true,
         };
       }
       return state;

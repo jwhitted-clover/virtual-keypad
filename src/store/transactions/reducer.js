@@ -102,7 +102,12 @@ export default (state = initialState, { type, payload }) => {
           },
         };
       }
-      return state;
+      const newState = {
+        ...state,
+        active: '',
+      };
+      delete newState.data[state.active];
+      return newState;
     }
     case '@@connector/onManualRefundResponse': {
       if (payload.success) {
@@ -122,7 +127,12 @@ export default (state = initialState, { type, payload }) => {
           },
         };
       }
-      return state;
+      const newState = {
+        ...state,
+        active: '',
+      };
+      delete newState.data[state.active];
+      return newState;
     }
     case '@@connector/onVoidPaymentResponse': {
       if (payload.success) {
@@ -138,6 +148,20 @@ export default (state = initialState, { type, payload }) => {
               visible: true,
               type: TRANSACTION.VOID,
               payment: payload.payment,
+            },
+          },
+        };
+      }
+      const cur = state.data[state.active];
+      if (cur?.type === TRANSACTION.VOID) {
+        return {
+          ...state,
+          active: '',
+          data: {
+            ...state.data,
+            [cur.id]: {
+              ...state.data[cur.id],
+              type: TRANSACTION.SALE,
             },
           },
         };

@@ -15,7 +15,7 @@ export default autoDismiss => {
       addToast(<Error error={error} />, {
         id: 'error',
         appearance: 'error',
-        autoDismiss,
+        autoDismiss: autoDismiss && !error.important,
         onDismiss: () => {
           dispatch(clearError());
         },
