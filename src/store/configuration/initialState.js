@@ -8,14 +8,14 @@ const hash = QS.parse(window.location.hash);
 const storage = Storage.get();
 
 const getCloverDomain = () => {
-  if (storage?.configuration?.cloverDomain) {
-    return storage?.configuration?.cloverDomain;
-  }
   if (document.referrer) {
     const referrer = new URL(document.referrer);
     if (referrer.origin.includes('clover.com')) {
       return referrer.toString();
     }
+  }
+  if (storage?.configuration?.cloverDomain) {
+    return storage?.configuration?.cloverDomain;
   }
   return DOMAIN;
 };
