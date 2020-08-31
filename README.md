@@ -38,10 +38,10 @@
 - [x] Initially hide configuration screen
 - [x] Implement permissions for credits and voids
 - [x] Add validation to configuration
-- [ ] Add help to configuration
+- [x] Add help to configuration
+- [ ] smartling translations (ensure nbsp Alt+0160 in titles)
 - [ ] Test error flows in thunks
 - [ ] Add timeouts to transactions
-- [ ] smartling translations (ensure nbsp Alt+0160 in titles)
 - [ ] Complete README
 - [ ] Enable Service Worker
 - [ ] Move repo to github.com/clover/virtual-keypad
