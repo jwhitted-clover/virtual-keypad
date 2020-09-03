@@ -72,7 +72,14 @@ export default forwardRef(
       return (
         <div className="btn-group-vertical d-flex flex-column">
           <ButtonDropdown isOpen={show} toggle={toggle}>
-            <DropdownToggle caret color="dark" outline size="sm" className="text-light text-truncate">
+            <DropdownToggle
+              caret
+              color="dark"
+              outline
+              size="sm"
+              className="text-light text-truncate"
+              disabled={disabled}
+            >
               {moreText}
             </DropdownToggle>
             <DropdownMenu right className="bg-dark">

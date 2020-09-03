@@ -36,7 +36,7 @@ export default () => {
           {sortedTransactions.map(transaction => (
             <tr key={transaction.id} role="button" onClick={() => showTransaction(transaction)}>
               <td>{parseTimestamp(transaction)}</td>
-              <td>{transaction.type}</td>
+              <td>{t(`TRANSACTION~${transaction.type}`)}</td>
               <td className="text-right">{parseAmount(transaction)}</td>
             </tr>
           ))}

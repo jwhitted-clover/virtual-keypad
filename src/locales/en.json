@@ -31,7 +31,7 @@
     "Reset": "Reset",
     "Cancel": "Cancel",
 
-    "Select Devices": "Select Device",
+    "Select Device": "Select Device",
     "cloudPayDisplay": {
       "installed": "Cloud Pay Display is installed",
       "uninstalled": "Cloud Pay Display is NOT installed"
@@ -190,22 +190,9 @@
       "Identifying…": "Identifying…",
       "Connecting…": "Connecting…",
       "Resetting…": "Resetting…",
-      "Processing...": "Processing…",
       "Processing…": "Processing…",
       "Verify Signature": "Verify Signature",
-      "Customer is tipping…": "Customer is tipping…",
-      "Customer is choosing payment method…": "Customer is choosing payment method…",
-      "Ready": "Ready",
-      "Timed out": "Timed out",
-      "Card Number": "Card Number",
-      "Customer is signing…": "Customer is signing…",
-      "Customer is selecting receipt type…": "Customer is selecting receipt type…",
-      "CVV Security Code": "CVV Security Code",
-      "Expiration Date": "Expiration Date",
-      "Transaction failed: Error connecting to payment gateway. Please try again later": "Transaction failed: Error connecting to payment gateway. Please try again later",
-      "This may be a duplicate, do you want to accept this payment?": "This may be a duplicate, do you want to accept this payment?",
-      "Partial authorization": "Partial authorization for {{amount}}<br/>Continue with transaction?",
-      "Processing card ending": "Processing Card ending in {{last4}}…"
+      "Ready": "Ready"
     },
 
     "connected": "connected"
