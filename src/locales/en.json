@@ -5,22 +5,22 @@
 
     "cloverDomain": {
       "label": "Clover Domain",
-      "help": "The Clover Domain is a **required** URL that will be used for API calls.\n\n###### Example:\n\n`https://www.clover.com`\n\n###### Note:\n\nThis should be automatically populated for you when launching via the dashboard."
+      "help": "The Clover Domain is a **required** URL that will be used for API calls.\n\n###### Example:\n\n`https://www.clover.com`\n\n###### Note:\n\nThis should be automatically populated when launching via the dashboard."
     },
     "merchantId": {
       "label": "Merchant ID",
       "title": "The Merchant ID should be a 13-character alphanumeric value.\nExample: ABC1234567890",
-      "help": "The Merchant ID is a **required** 13-character alphanumeric value.\n\n###### Example:\n\n`ABC1234567890`\n\nFor help finding this value, refer to [Use the Web Dashboard to manage your Clover account](https://www.clover.com/help/web-dashboard-for-managing-your-clover-account/#view-merchant-id-clover-id-device-serial-number-and)\n\n###### Note:\n\nThis should be automatically populated for you when launching via the dashboard."
+      "help": "The Merchant ID is a **required** 13-character alphanumeric value.\n\n###### Example:\n\n`ABC1234567890`\n\nFor help finding this value, refer to [Use the Web Dashboard to manage your Clover account](https://www.clover.com/help/web-dashboard-for-managing-your-clover-account/#view-merchant-id-clover-id-device-serial-number-and)\n\n###### Note:\n\nThis should be automatically populated when launching via the dashboard."
     },
     "employeeId": {
       "label": "Employee ID",
       "title": "The Employee ID should be a 13-character alphanumeric value.\nExample: ABC1234567890",
-      "help": "The Employee ID is an **optional** 13-character alphanumeric value.\n\n###### Example:\n\n`ABC1234567890`\n\n###### Note:\n\nThis should be automatically populated for you when launching via the dashboard."
+      "help": "The Employee ID is an **optional** 13-character alphanumeric value.\n\n###### Example:\n\n`ABC1234567890`\n\n###### Note:\n\nThis should be automatically populated when launching via the dashboard."
     },
     "accessToken": {
       "label": "Access Token",
       "title": "The Access Token should be a 32-character UUID value.\nExample: 12345678-ABCD-1234-ABCD-1234-1234567890AB\nExample: 12345678abcd1234abcd12341234567890ab",
-      "help": "The Access Token is a **required** 32-character alphanumeric value.\n\n###### Example:\n\n`12345678abcd1234abcd12341234567890ab`\n\n###### Note:\n\nThis should be automatically populated for you when launching via the dashboard."
+      "help": "The Access Token is a **required** 32-character alphanumeric value.\n\n###### Example:\n\n`12345678abcd1234abcd12341234567890ab`\n\n###### Note:\n\nThis should be automatically populated when launching via the dashboard."
     },
     "friendlyId": {
       "label": "Friendly ID",

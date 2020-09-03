@@ -40,6 +40,7 @@
 - [x] Add validation to configuration
 - [x] Add help to configuration
 - [ ] smartling translations (ensure nbsp Alt+0160 in titles)
+- [ ] RAID
 - [ ] Test error flows in thunks
 - [ ] Add timeouts to transactions
 - [ ] Complete README

@@ -1,15 +1,19 @@
-import React, { forwardRef, useEffect, useState, useMemo, useCallback } from 'react';
+import React, { forwardRef, useEffect, useState, useMemo, useCallback, useRef } from 'react';
 import { Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
+import ScaleText from './ScaleText';
+
 export default forwardRef(
   (
     { action, height, color, keyCodes, disabled, onClick, moreActions, moreText, onMoreClick, children, ...other },
-    ref
+    ref$
   ) => {
     const { t } = useTranslation();
     const [show, setShow] = useState(false);
+    const ref = ref$ || useRef();
+    const toggleRef = useRef();
 
     const toggle = useCallback(() => setShow(cur => !cur), [setShow]);
 
@@ -68,7 +72,7 @@ export default forwardRef(
       return (
         <div className="btn-group-vertical d-flex flex-column">
           <ButtonDropdown isOpen={show} toggle={toggle}>
-            <DropdownToggle caret color="dark" outline size="sm" className="text-light">
+            <DropdownToggle caret color="dark" outline size="sm" className="text-light text-truncate">
               {moreText}
             </DropdownToggle>
             <DropdownMenu right className="bg-dark">
@@ -106,7 +110,9 @@ export default forwardRef(
         title={title}
         {...other}
       >
-        {value}
+        <ScaleText key={value} minScale={action ? 0.4 : 1} maxScale={1}>
+          {value}
+        </ScaleText>
       </Button>
     );
   }
