@@ -13,7 +13,6 @@ export default forwardRef(
     const { t } = useTranslation();
     const [show, setShow] = useState(false);
     const ref = ref$ || useRef();
-    const toggleRef = useRef();
 
     const toggle = useCallback(() => setShow(cur => !cur), [setShow]);
 

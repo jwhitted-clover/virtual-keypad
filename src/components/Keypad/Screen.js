@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import { currency } from '../../common';
 import { selectStatus, selectBuffer, selectActiveTransactionType, selectActiveTransactionAmount } from '../../store';
