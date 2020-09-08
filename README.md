@@ -2,11 +2,11 @@
 
 # Virtual Keypad
 
-The Virtual Keypad provides simple sale transactions. Credits and voids are also supported if the employee has proper permissions.
+The Virtual Keypad provides simple sale transactions. Credits (manual refunds) and Voids are also supported if the employee has proper permissions.
 
 ## Usage
 
-There are two ways use the Virtual Keypad.
+There are two ways to use the Virtual Keypad.
 
 ### Launching from the Merchant Dashboard
 
@@ -14,7 +14,7 @@ There are two ways use the Virtual Keypad.
 1. Install `Virtual Keypad` application for the merchant
 1. Click `Virtual Keypad` from the merchant dashboard
 
-### Running with manual configuration
+### Running with Manual Configuration
 
 1. Open [Virtual Keypad](https://clover.github.io/virtual-keypad/)
 1. Configure `Clover Domain`
