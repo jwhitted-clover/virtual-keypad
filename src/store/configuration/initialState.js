@@ -25,6 +25,7 @@ export default {
   merchantId: qs.merchant_id || storage?.configuration?.merchantId || '',
   employeeId: qs.employee_id || storage?.configuration?.employeeId || '',
   accessToken: hash.access_token || storage?.configuration?.accessToken || '',
+  raid: qs.raid || storage?.configuration?.raid || '',
   friendlyId: storage?.configuration?.friendlyId || 'Virtual Keypad',
   loading: undefined,
 };

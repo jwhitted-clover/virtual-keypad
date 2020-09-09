@@ -19,6 +19,7 @@ export default () => {
   const [merchantId, setMerchantId] = useState(configuration.merchantId);
   const [employeeId, setEmployeeId] = useState(configuration.employeeId);
   const [accessToken, setAccessToken] = useState(configuration.accessToken);
+  const [raid, setRaid] = useState(configuration.raid);
   const [friendlyId, setFriendlyId] = useState(configuration.friendlyId);
 
   const [submitting, setSubmitting] = useState(false);
@@ -30,12 +31,12 @@ export default () => {
       try {
         event.preventDefault();
         setSubmitting(true);
-        await dispatch(configure({ cloverDomain, merchantId, employeeId, accessToken, friendlyId }));
+        await dispatch(configure({ cloverDomain, merchantId, employeeId, accessToken, raid, friendlyId }));
       } finally {
         setSubmitting(false);
       }
     },
-    [dispatch, cloverDomain, merchantId, employeeId, accessToken, friendlyId]
+    [dispatch, cloverDomain, merchantId, employeeId, accessToken, raid, friendlyId]
   );
 
   const reset = useCallback(
@@ -45,9 +46,10 @@ export default () => {
       setMerchantId(configuration.merchantId);
       setEmployeeId(configuration.employeeId);
       setAccessToken(configuration.accessToken);
+      setRaid(configuration.raid);
       setFriendlyId(configuration.friendlyId);
     },
-    [configuration, setCloverDomain, setMerchantId, setEmployeeId, setAccessToken, setFriendlyId]
+    [configuration, setCloverDomain, setMerchantId, setEmployeeId, setAccessToken, setRaid, setFriendlyId]
   );
 
   if (!visible) return null;
@@ -91,6 +93,14 @@ export default () => {
                 value={employeeId}
                 onChange={setEmployeeId}
                 disabled={disabled}
+              />
+              <TextField
+                id="raid"
+                pattern="^[a-zA-Z0-9 .]{1,255}$"
+                value={raid}
+                onChange={setRaid}
+                disabled={disabled}
+                required
               />
               <TextField
                 id="accessToken"

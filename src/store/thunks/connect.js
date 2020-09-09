@@ -1,6 +1,6 @@
 import Clover from 'remote-pay-cloud';
 
-import { REMOTE_APPLICATION_ID, APP } from '../../common/constants';
+import { APP } from '../../common/constants';
 import persist from '../../common/persist';
 import { selectConfiguration } from '../configuration/selectors';
 import { selectDevices } from '../devices/selectors';
@@ -17,7 +17,7 @@ export default deviceId => async (dispatch, getState) => {
     const state = getState();
     persist(state);
 
-    const { cloverDomain, merchantId, accessToken, friendlyId } = selectConfiguration(state);
+    const { cloverDomain, merchantId, raid, accessToken, friendlyId } = selectConfiguration(state);
     const device = selectDevices(state).find(d => d.id === deviceId);
 
     if (!device) throw new Error(`Device not found`);
@@ -28,12 +28,7 @@ export default deviceId => async (dispatch, getState) => {
     });
 
     const connector = factory.createICloverConnector(
-      new Clover.WebSocketCloudCloverDeviceConfigurationBuilder(
-        REMOTE_APPLICATION_ID,
-        deviceId,
-        merchantId,
-        accessToken
-      )
+      new Clover.WebSocketCloudCloverDeviceConfigurationBuilder(raid, deviceId, merchantId, accessToken)
         .setCloverServer(cloverDomain)
         .setFriendlyId(friendlyId)
         .build()

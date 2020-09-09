@@ -1,8 +1,8 @@
 import * as CONST from './constants';
 
-export const setConfiguration = ({ cloverDomain, merchantId, employeeId, accessToken, friendlyId }) => ({
+export const setConfiguration = ({ cloverDomain, merchantId, employeeId, raid, accessToken, friendlyId }) => ({
   type: CONST.CONFIGURATION_SET,
-  payload: { cloverDomain, merchantId, employeeId, accessToken, friendlyId },
+  payload: { cloverDomain, merchantId, employeeId, raid, accessToken, friendlyId },
 });
 
 export const setConfigurationLoading = () => ({ type: CONST.CONFIGURATION_LOADING });

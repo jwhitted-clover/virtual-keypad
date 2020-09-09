@@ -22,6 +22,11 @@
       "title": "The Access Token should be a 32-character UUID value.\nExample: 12345678-ABCD-1234-ABCD-1234-1234567890AB\nExample: 12345678abcd1234abcd12341234567890ab",
       "help": "The Access Token is a **required** 32-character alphanumeric value.\n\n###### Example:\n\n`12345678abcd1234abcd12341234567890ab`\n\n###### Note:\n\nThis should be automatically populated when launching via the dashboard."
     },
+    "raid": {
+      "label": "Remote Application ID",
+      "title": "The Remote Application ID should be 1 to 255 characters (alphanumeric, spaces, periods).",
+      "help": "The Remote Application ID is a **required** value up to 255 characters in length (alphanumeric, spaces, periods).\n\n###### Note:\n\nThis should be automatically populated when launching via the dashboard."
+    },
     "friendlyId": {
       "label": "Friendly ID",
       "help": "The Friendly ID is an **optional** value.\n\n###### Example:\n\n`Virtual Keypad`"

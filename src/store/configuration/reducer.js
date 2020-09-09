@@ -19,6 +19,7 @@ export default (state = initialState, { type, payload }) => {
         cloverDomain: payload.cloverDomain || '',
         merchantId: payload.merchantId || '',
         employeeId: payload.employeeId || '',
+        raid: payload.raid || '',
         accessToken: payload.accessToken || '',
         friendlyId: payload.friendlyId || '',
       };
