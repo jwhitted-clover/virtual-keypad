@@ -24,10 +24,7 @@ export default ({ error }) => {
 
   return (
     <div className={classNames('Error', { expanded })}>
-      <h5>
-        {t([`ERROR~${message}`, message])}
-        {'abc'.repeat(500)}
-      </h5>
+      <h5>{t([`ERROR~${message}`, message])}</h5>
       {!!stack && !expanded && (
         <Button color="link" size="small" onClick={expand}>
           {t('Show details')}
@@ -35,10 +32,7 @@ export default ({ error }) => {
       )}
       {!!stack && expanded && (
         <pre className="mb-0">
-          <code>
-            {stack}
-            {'abc'.repeat(500)}
-          </code>
+          <code>{stack}</code>
         </pre>
       )}
     </div>
